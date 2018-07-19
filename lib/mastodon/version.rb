@@ -33,7 +33,8 @@ module Mastodon
     end
 
     def source_base_url
-      'https://github.com/tootsuite/mastodon'
+#      'https://github.com/tootsuite/mastodon'
+        'https://github.com/musashino205/mastodon'
     end
 
     # specify git tag or commit hash here
@@ -41,8 +42,15 @@ module Mastodon
       nil
     end
 
+    # specify git branch here
+    def source_branch
+      nil
+    end
+
     def source_url
-      if source_tag
+      if source_branch
+        "#{source_base_url}/tree/#{source_branch}"
+      elsif source_tag
         "#{source_base_url}/tree/#{source_tag}"
       else
         source_base_url
