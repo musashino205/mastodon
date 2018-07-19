@@ -44,7 +44,7 @@ module Mastodon
 
     # specify git branch here
     def source_branch
-      nil
+      'teokure-2.x'
     end
 
     def source_url
