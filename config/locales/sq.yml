@@ -479,7 +479,6 @@ sq:
     warning: Hapni sytë me ato të dhëna. Mos ia jepni kurrë njeriu!
     your_token: Token-i juaj për hyrje
   auth:
-    agreement_html: Duke klikuar mbi "Regjistrohuni" më poshtë, pajtoheni të ndiqni <a href="%{rules_path}">rregullat e shërbyesit</a> dhe <a href="%{terms_path}">kushtet tona të shërbimit</a>.
     change_password: Fjalëkalim
     confirm_email: Ripohoni email-in
     delete_account: Fshije llogarinë
@@ -590,18 +589,6 @@ sq:
       title: Filtra
     new:
       title: Shtoni filtër të ri
-  followers:
-    domain: Përkatësi
-    explanation_html: Nëse doni të garantoni privatësinë e gjendjeve tuaja, duhet të jeni në dijeni se cilët ju ndjekin. <strong>Gjendjet tuaja private u dërgohen krejt shërbyes ku keni ndjekës</strong>. Mund të donit t’i rishqyrtoni ato, dhe të hiqni ndjekës, nëse nuk besoni se privatësia juaj respektohet nga stafi apo software-i i këtyre shërbyesve.
-    followers_count: Numër ndjekësish
-    lock_link: Kyçeni llogarinë tuaj
-    purge: Hiqe nga ndjekësit
-    success:
-      one: Në përmbushje e sipër të bllokimit të butë të ndjekësve nga një përkatësi…
-      other: Në përmbushje e sipër të bllokimit të butë të ndjekësve nga %{count} përkatësi…
-    true_privacy_html: Ju lutemi, kini parasysh se <strong>privatësi e vërtetë mund të arrihet vetëm me fshehtëzim skaj-më-skaj</strong>.
-    unlocked_warning_html: Mund t’ju ndjekë cilido, që të shohë menjëherë gjendjet tuaja private. %{lock_link} që të jeni në gjendje të shqyrtoni dhe hidhni poshtë ndjekës.
-    unlocked_warning_title: Llogaria juaj s’është kyçur
   footer:
     developers: Zhvillues
     more: Më tepër…
@@ -793,14 +780,11 @@ sq:
     edit_profile: Përpunoni profilin
     export: Eksportim të dhënash
     featured_tags: Hashtagë të zgjedhur
-    followers: Ndjekës të autorizuar
     import: Importo
     migrate: Migrim llogarie
     notifications: Njoftime
     preferences: Parapëlqime
-    settings: Rregullime
     two_factor_authentication: Mirëfilltësim Dyfaktorësh
-    your_apps: Aplikacionet tuaja
   statuses:
     attached:
       description: 'Bashkëngjitur: %{attached}'
