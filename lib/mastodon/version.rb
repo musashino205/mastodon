@@ -33,7 +33,7 @@ module Mastodon
     end
 
     def repository
-      'musashino205/mastodon'
+      'tootsuite/mastodon'
     end
 
     def source_base_url
