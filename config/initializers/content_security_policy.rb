@@ -8,7 +8,7 @@ assets_host ||= "http#{Rails.configuration.x.use_https ? 's' : ''}://#{base_host
 
 Rails.application.config.content_security_policy do |p|
   p.base_uri        :none
-  p.default_src     :none
+  p.default_src     :self
   p.frame_ancestors :none
   p.font_src        :self, assets_host
   p.img_src         :self, :https, :data, :blob, assets_host
