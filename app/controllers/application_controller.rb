@@ -11,21 +11,26 @@ class ApplicationController < ActionController::Base
   include UserTrackingConcern
   include SessionTrackingConcern
   include CacheConcern
+  include DomainControlHelper
 
   helper_method :current_account
   helper_method :current_session
   helper_method :current_theme
   helper_method :single_user_mode?
   helper_method :use_seamless_external_login?
+  helper_method :whitelist_mode?
 
   rescue_from ActionController::RoutingError, with: :not_found
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActionController::InvalidAuthenticityToken, with: :unprocessable_entity
   rescue_from ActionController::UnknownFormat, with: :not_acceptable
   rescue_from Mastodon::NotPermittedError, with: :forbidden
+  rescue_from HTTP::Error, OpenSSL::SSL::SSLError, with: :internal_server_error
 
   before_action :store_current_location, except: :raise_not_found, unless: :devise_controller?
   before_action :require_functional!, if: :user_signed_in?
+
+  skip_before_action :verify_authenticity_token, only: :raise_not_found
 
   def raise_not_found
     raise ActionController::RoutingError, "No route matches #{params[:unmatched_route]}"
@@ -38,7 +43,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized_fetch_mode?
-    ENV['AUTHORIZED_FETCH'] == 'true'
+    ENV['AUTHORIZED_FETCH'] == 'true' || Rails.configuration.x.whitelist_mode
   end
 
   def public_fetch_mode?
@@ -89,6 +94,10 @@ class ApplicationController < ActionController::Base
 
   def not_acceptable
     respond_with_error(406)
+  end
+
+  def internal_server_error
+    respond_with_error(500)
   end
 
   def single_user_mode?

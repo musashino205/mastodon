@@ -5,17 +5,17 @@ ruby '>= 2.4.0', '< 2.7.0'
 
 gem 'pkg-config', '~> 1.3'
 
-gem 'puma', '~> 4.0'
+gem 'puma', '~> 4.1'
 gem 'rails', '~> 5.2.3'
 gem 'thor', '~> 0.20'
 
 gem 'hamlit-rails', '~> 0.2'
 gem 'pg', '~> 1.1'
 gem 'makara', '~> 0.4'
-gem 'pghero', '~> 2.2'
+gem 'pghero', '~> 2.3'
 gem 'dotenv-rails', '~> 2.7'
 
-gem 'aws-sdk-s3', '~> 1.45', require: false
+gem 'aws-sdk-s3', '~> 1.46', require: false
 gem 'fog-core', '<= 2.1.0'
 gem 'fog-openstack', '~> 0.3', require: false
 gem 'paperclip', '~> 6.0'
@@ -32,7 +32,7 @@ gem 'iso-639'
 gem 'chewy', '~> 5.0'
 gem 'cld3', '~> 3.2.4'
 gem 'devise', '~> 4.6'
-gem 'devise-two-factor', '~> 3.0'
+gem 'devise-two-factor', '~> 3.1'
 
 group :pam_authentication, optional: true do
   gem 'devise_pam_authenticatable2', '~> 9.2'
@@ -52,7 +52,7 @@ gem 'redis-namespace', '~> 1.5'
 gem 'htmlentities', '~> 4.3'
 gem 'http', '~> 3.3'
 gem 'http_accept_language', '~> 2.1'
-gem 'http_parser.rb', '~> 0.6', git: 'https://github.com/tmm1/http_parser.rb', ref: '54b17ba8c7d8d20a16dfc65d1775241833219cf2'
+gem 'http_parser.rb', '~> 0.6', git: 'https://github.com/tmm1/http_parser.rb', ref: '54b17ba8c7d8d20a16dfc65d1775241833219cf2', submodules: true
 gem 'httplog', '~> 1.3'
 gem 'idn-ruby', require: 'idn'
 gem 'kaminari', '~> 1.1'
@@ -61,11 +61,12 @@ gem 'mime-types', '~> 3.2', require: 'mime/types/columnar'
 gem 'nilsimsa', git: 'https://github.com/witgo/nilsimsa', ref: 'fd184883048b922b176939f851338d0a4971a532'
 gem 'nokogiri', '~> 1.10'
 gem 'nsa', '~> 0.2'
-gem 'oj', '~> 3.8'
+gem 'oj', '~> 3.9'
 gem 'ostatus2', '~> 2.0'
 gem 'ox', '~> 2.11'
+gem 'parslet'
 gem 'posix-spawn', git: 'https://github.com/rtomayko/posix-spawn', ref: '58465d2e213991f8afb13b984854a49fcdcc980c'
-gem 'pundit', '~> 2.0'
+gem 'pundit', '~> 2.1'
 gem 'premailer-rails'
 gem 'rack-attack', '~> 6.1'
 gem 'rack-cors', '~> 1.0', require: 'rack/cors'
@@ -79,7 +80,7 @@ gem 'sidekiq', '~> 5.2'
 gem 'sidekiq-scheduler', '~> 3.0'
 gem 'sidekiq-unique-jobs', '~> 6.0'
 gem 'sidekiq-bulk', '~>0.2.0'
-gem 'simple-navigation', '~> 4.0'
+gem 'simple-navigation', '~> 4.1'
 gem 'simple_form', '~> 4.1'
 gem 'sprockets-rails', '~> 3.2', require: 'sprockets/railtie'
 gem 'stoplight', '~> 2.1.3'
@@ -91,7 +92,7 @@ gem 'tzinfo-data', '~> 1.2019'
 gem 'webpacker', '~> 4.0'
 gem 'webpush'
 
-gem 'json-ld', '~> 3.0'
+gem 'json-ld', git: 'https://github.com/ruby-rdf/json-ld.git', ref: '345b7a5733308af827e8491d284dbafa9128d7a2'
 gem 'json-ld-preloaded', '~> 3.0'
 gem 'rdf-normalize', '~> 0.3'
 
@@ -109,9 +110,9 @@ group :production, :test do
 end
 
 group :test do
-  gem 'capybara', '~> 3.26'
+  gem 'capybara', '~> 3.28'
   gem 'climate_control', '~> 0.2'
-  gem 'faker', '~> 1.9'
+  gem 'faker', '~> 2.1'
   gem 'microformats', '~> 4.1'
   gem 'rails-controller-testing', '~> 1.0'
   gem 'rspec-sidekiq', '~> 3.0'
@@ -129,9 +130,9 @@ group :development do
   gem 'letter_opener', '~> 1.7'
   gem 'letter_opener_web', '~> 1.3'
   gem 'memory_profiler'
-  gem 'rubocop', '~> 0.73', require: false
-  gem 'rubocop-rails', '~> 2.2', require: false
-  gem 'brakeman', '~> 4.5', require: false
+  gem 'rubocop', '~> 0.74', require: false
+  gem 'rubocop-rails', '~> 2.3', require: false
+  gem 'brakeman', '~> 4.6', require: false
   gem 'bundler-audit', '~> 0.6', require: false
 
   gem 'capistrano', '~> 3.11'
