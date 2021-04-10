@@ -26,7 +26,7 @@ RUN ARCH= && \
 	mv node-v$NODE_VER-linux-$ARCH /opt/node
 
 # Install Ruby
-ENV RUBY_VER="2.7.2"
+ENV RUBY_VER="2.7.3"
 RUN apt-get update && \
   apt-get install -y --no-install-recommends build-essential \
     bison libyaml-dev libgdbm-dev libreadline-dev libjemalloc-dev \
@@ -49,7 +49,7 @@ RUN npm install -g yarn && \
 	gem install bundler && \
 	apt-get update && \
 	apt-get install -y --no-install-recommends git libicu-dev libidn11-dev \
-	libpq-dev libprotobuf-dev protobuf-compiler
+	libpq-dev libprotobuf-dev protobuf-compiler shared-mime-info
 
 COPY Gemfile* package.json yarn.lock /opt/mastodon/
 
