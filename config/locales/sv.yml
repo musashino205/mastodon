@@ -160,10 +160,6 @@ sv:
       pending: Inväntar granskning
       perform_full_suspension: Utför full avstängning
       previous_strikes: Tidigare varningar
-      previous_strikes_description_html:
-        one: Detta konto har <strong>en</strong> varning.
-        other: Detta konto har <strong>%{count}</strong> varningar.
-        zero: Detta konto är <strong>i gott skick</strong>.
       promote: Befordra
       protocol: Protokoll
       public: Offentlig
@@ -191,7 +187,6 @@ sv:
       security_measures:
         only_password: Endast lösenord
         password_and_2fa: Lösenord och 2FA
-        password_and_sign_in_token: Lösenord och e-post token
       sensitive: Känsligt
       sensitized: markerad som känsligt
       shared_inbox_url: Delad inkorg URL
@@ -330,7 +325,6 @@ sv:
       enable: Aktivera
       enabled: Aktiverad
       enabled_msg: Aktiverade den emoji utan problem
-      image_hint: PNG upp till 50KB
       list: Lista
       listed: Noterade
       new:
@@ -405,6 +399,8 @@ sv:
       status: Status
       title: Följ rekommendationer
     instances:
+      availability:
+        warning: Det senaste försöket att ansluta till denna värddator har misslyckats
       back_to_all: Alla
       back_to_limited: Begränsat
       back_to_warning: Varning
@@ -909,9 +905,6 @@ sv:
       new_followers_summary:
         one: Du har också förvärvat en ny följare! Jippie!
         other: Du har också fått %{count} nya följare medans du var iväg! Otroligt!
-      subject:
-        one: "1 nytt meddelande sedan ditt senaste besök \U0001F418"
-        other: "%{count} nya meddelanden sedan ditt senaste besök \U0001F418"
       title: I din frånvaro...
     favourite:
       body: 'Din status favoriserades av %{name}:'
@@ -1089,7 +1082,7 @@ sv:
     disallowed_hashtags:
       one: 'innehöll en otillåten hashtag: %{tags}'
       other: 'innehöll de otillåtna hashtagarna: %{tags}'
-    edited_at: 'Ändrad: %{date}'
+    edited_at_html: 'Ändrad: %{date}'
     errors:
       in_reply_not_found: Statusen du försöker svara på existerar inte.
     open_in_web: Öppna på webben
@@ -1266,10 +1259,8 @@ sv:
       explanation: Du begärde en fullständig säkerhetskopiering av ditt Mastodon-konto. Det är nu klart för nedladdning!
       subject: Ditt arkiv är klart för nedladdning
       title: Arkivuttagning
-    sign_in_token:
-      details: 'Här är detaljerna för försöket:'
-      further_actions: 'Om det inte var du, vänligen ändra ditt lösenord och aktivera tvåfaktor-autentisering i ditt konto. Du kan göra det här:'
-      title: Inloggningsförsök
+    suspicious_sign_in:
+      change_password: Ändra ditt lösenord
     warning:
       reason: 'Anledning:'
       subject:
@@ -1301,9 +1292,7 @@ sv:
       title: Välkommen ombord, %{name}!
   users:
     follow_limit_reached: Du kan inte följa fler än %{limit} personer
-    generic_access_help_html: Har du problem med att komma åt ditt konto? Du kan komma i kontakt med %{email} för assistans
     invalid_otp_token: Ogiltig tvåfaktorskod
-    invalid_sign_in_token: Ogiltig säkerhetskod
     otp_lost_help_html: Om du förlorat åtkomst till båda kan du komma i kontakt med %{email}
     seamless_external_login: Du är inloggad via en extern tjänst, så lösenord och e-postinställningar är inte tillgängliga.
     signed_in_as: 'Inloggad som:'

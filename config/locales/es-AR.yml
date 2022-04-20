@@ -168,7 +168,6 @@ es-AR:
       previous_strikes_description_html:
         one: Esta cuenta tiene <strong>un</strong> incumplimiento.
         other: Esta cuenta tiene <strong>%{count}</strong> incumplimientos.
-        zero: Esta cuenta está <strong>en buen estado</strong>.
       promote: Promover
       protocol: Protocolo
       public: Pública
@@ -200,7 +199,6 @@ es-AR:
       security_measures:
         only_password: Sólo contraseña
         password_and_2fa: Contraseña y 2FA
-        password_and_sign_in_token: Contraseña y token por correo electrónico
       sensitive: Forzar como sensible
       sensitized: Marcado como sensible
       shared_inbox_url: Dirección web de la bandeja de entrada compartida
@@ -373,7 +371,7 @@ es-AR:
       enable: Habilitar
       enabled: Habilitado
       enabled_msg: Se habilitó ese emoji exitosamente
-      image_hint: PNG de hasta 50KB
+      image_hint: PNG o GIF, hasta %{size}
       list: Listar
       listed: Listados
       new:
@@ -480,11 +478,42 @@ es-AR:
       title: Recomendaciones de cuentas para seguir
       unsuppress: Restablecer recomendaciones de cuentas para seguir
     instances:
+      availability:
+        description_html:
+          one: Si el envío al dominio falla durante <strong>%{count} día</strong> sin éxito, no se harán más intentos de entrega a menos que se reciba un envío <em>desde</em> el dominio.
+          other: Si el envío al dominio falla durante <strong>%{count} días</strong> sin éxito, no se harán más intentos de entrega a menos que se reciba un envío <em>desde</em> el dominio.
+        failure_threshold_reached: Umbral de límite de fallo alcanzado el %{date}.
+        failures_recorded:
+          one: Intento fallido en %{count} día.
+          other: Intentos fallidos en %{count} días.
+        no_failures_recorded: No hay fallos en el registro.
+        title: Disponibilidad
+        warning: El último intento de conexión a este servidor no fue exitoso
       back_to_all: Todos
       back_to_limited: Limitados
       back_to_warning: Advertencia
       by_domain: Dominio
       confirm_purge: "¿Estás seguro que querés eliminar permanentemente los datos de este dominio?"
+      content_policies:
+        comment: Nota interna
+        description_html: Podés definir políticas de contenido que se aplicarán a todas las cuentas de este dominio y a cualquiera de sus subdominios.
+        policies:
+          reject_media: Rechazar medios
+          reject_reports: Rechazar denuncias
+          silence: Limitar
+          suspend: Suspender
+        policy: Política
+        reason: Razón pública
+        title: Políticas de contenido
+      dashboard:
+        instance_accounts_dimension: Cuentas más seguidas
+        instance_accounts_measure: cuentas almacenadas
+        instance_followers_measure: nuestros seguidores allí
+        instance_follows_measure: sus seguidores aquí
+        instance_languages_dimension: Idiomas principales
+        instance_media_attachments_measure: archivos adjuntos almacenados
+        instance_reports_measure: denuncias sobre ellos
+        instance_statuses_measure: mensajes almacenados
       delivery:
         all: Todos
         clear: Limpiar errores de entrega
@@ -499,7 +528,6 @@ es-AR:
       known_accounts:
         one: "%{count} cuenta conocida"
         other: "%{count} cuentas conocidas"
-        zero: Ninguna cuenta conocida
       moderation:
         all: Todas
         limited: Limitadas
@@ -507,12 +535,14 @@ es-AR:
       private_comment: Comentario privado
       public_comment: Comentario público
       purge: Purgar
+      purge_description_html: Si creés que este dominio está fuera de línea para siempre, podés eliminar de tu almacenamiento todos los registros de cuentas y los datos asociados a este dominio. Esto puede llevar un tiempo.
       title: Federación
       total_blocked_by_us: Bloqueada por nosotros
       total_followed_by_them: Seguidas por ellos
       total_followed_by_us: Seguidas por nosotros
       total_reported: Denuncias sobre ellas
       total_storage: Adjuntos
+      totals_time_period_hint_html: Los datos totales mostrados a continuación incluyen datos para todo el tiempo.
     invites:
       deactivate_all: Desactivar todas
       filter:
@@ -567,7 +597,7 @@ es-AR:
       action_taken_by: Acción tomada por
       actions:
         delete_description_html: Los mensajes denunciados serán eliminados y se registrará un incumplimiento para ayudarte a escalar en futuras infracciones por la misma cuenta.
-        mark_as_sensitive_description_html: Los archivos de medios en los mensajes denunciados se marcarán como sensibles y se registrará un incumplimiento para ayudarte a escalar las futuras acciones de la misma cuenta.
+        mark_as_sensitive_description_html: Los archivos de medios en los mensajes denunciados se marcarán como sensibles y se registrará un incumplimiento para ayudarte a escalar las futuras infracciones de la misma cuenta.
         other_description_html: Ver más opciones para controlar el comportamiento de la cuenta y personalizar la comunicación de la cuenta denunciada.
         resolve_description_html: No se tomarán medidas contra la cuenta denunciada, no se registrará el incumplimiento, y se cerrará la denuncia.
         silence_description_html: El perfil será visible sólo para aquellos que ya sigan esta cuenta o que la busquen manualmente, limitando seriamente su alcance. Siempre puede ser revertido.
@@ -742,6 +772,11 @@ es-AR:
     system_checks:
       database_schema_check:
         message_html: Hay migraciones pendientes de la base de datos. Por favor, ejecutalas para asegurarte de que la aplicación funciona según lo esperado
+      elasticsearch_running_check:
+        message_html: No se pudo conectar a Elasticsearch. Por favor, revisá que se esté ejecutando, o deshabilitá la búsqueda de texto completo
+      elasticsearch_version_check:
+        message_html: 'Versión incompatible de Elasticsearch: %{value}'
+        version_comparison: Se está ejecutando la versión %{running_version} de Elasticsearch, mientras que la versión requerida es la %{required_version}
       rules_check:
         action: Administrar reglas del servidor
         message_html: No definiste ninguna regla del servidor.
@@ -762,9 +797,8 @@ es-AR:
         disallow: Rechazar enlace
         disallow_provider: Rechazar medio
         shared_by_over_week:
-          one: Compartido por una persona en la última semana
-          other: Compartido por %{count} personas en la última semana
-          zero: Compartido por nadie en la última semana
+          one: Compartido por una persona durante la última semana
+          other: Compartido por %{count} personas durante la última semana
         title: Enlaces en tendencia
         usage_comparison: Compartido %{today} veces hoy, comparado con la/s %{yesterday} vez/veces de ayer
       pending_review: Revisión pendiente
@@ -805,9 +839,8 @@ es-AR:
         usable: Pueden usarse
         usage_comparison: Usadas %{today} veces hoy, comparado con la/s %{yesterday} vez/veces de ayer
         used_by_over_week:
-          one: Usada por una persona en la última semana
-          other: Usada por %{count} personas en la última semana
-          zero: Usada por nadie en la última semana
+          one: Usada por una persona durante la última semana
+          other: Usada por %{count} personas durante la última semana
       title: Tendencias
     warning_presets:
       add_new: Agregar nuevo
@@ -873,7 +906,7 @@ es-AR:
     notification_preferences: Cambiar configuración de correo electrónico
     salutation: "%{name}:"
     settings: 'Cambiar configuración de correo electrónico: %{link}'
-    view: 'Vista:'
+    view: 'Visitá:'
     view_profile: Ver perfil
     view_status: Ver mensaje
   applications:
@@ -1203,8 +1236,8 @@ es-AR:
         one: Además, ¡ganaste un nuevo seguidor mientras estabas ausente! ¡Esa!
         other: Además, ¡ganaste %{count} nuevos seguidores mientras estabas ausente! ¡Esssa!
       subject:
-        one: "1 nueva notificación desde tu última visita \U0001F418"
-        other: "%{count} nuevas notificaciones desde tu última visita \U0001F418"
+        one: "1 nueva notificación desde tu última visita 🐘"
+        other: "%{count} nuevas notificaciones desde tu última visita 🐘"
       title: En tu ausencia...
     favourite:
       body: 'Tu mensaje fue marcado como favorito por %{name}:'
@@ -1405,7 +1438,7 @@ es-AR:
     disallowed_hashtags:
       one: 'contenía una etiqueta no permitida: %{tags}'
       other: 'contenía las etiquetas no permitidas: %{tags}'
-    edited_at: Editado %{date}
+    edited_at_html: Editado el %{date}
     errors:
       in_reply_not_found: El mensaje al que intentás responder no existe.
     open_in_web: Abrir en la web
@@ -1599,12 +1632,13 @@ es-AR:
       explanation: Solicitaste un resguardo completo de tu cuenta de Mastodon. ¡Ya está listo para descargar!
       subject: Tu archivo historial está listo para descargar
       title: Descargar archivo historial
-    sign_in_token:
-      details: 'Acá están los detalles del intento:'
-      explanation: 'Detectamos un intento de inicio de sesión en tu cuenta desde una dirección IP no reconocida. Si fuiste vos, por favor, ingresá el código de seguridad de abajo en la página del desafío:'
-      further_actions: 'Si no eras vos, por favor, cambiá tu contraseña y habilitá la autenticación de dos factores en tu cuenta. Podés hacerlo acá:'
-      subject: Por favor, confirmá el intento de inicio de sesión
-      title: Intento de inicio de sesión
+    suspicious_sign_in:
+      change_password: cambiés tu contraseña
+      details: 'Acá están los detalles del inicio de sesión:'
+      explanation: Detectamos un inicio de sesión de tu cuenta desde una nueva dirección IP.
+      further_actions_html: Si no fuiste vos, te recomendamos que %{action} inmediatamente y habilités la autenticación de dos factores para mantener tu cuenta segura.
+      subject: Se accedió a tu cuenta desde una nueva dirección IP
+      title: Un nuevo inicio de sesión
     warning:
       appeal: Enviar una apelación
       appeal_description: Si creés que esto es un error, podés enviar una apelación al equipo de %{instance}.
@@ -1655,13 +1689,10 @@ es-AR:
       title: "¡Bienvenido a bordo, %{name}!"
   users:
     follow_limit_reached: No podés seguir a más de %{limit} cuentas
-    generic_access_help_html: "¿Tenés problemas para acceder a tu cuenta? Podés ponerte en contacto con %{email} para obtener ayuda"
     invalid_otp_token: Código de dos factores no válido
-    invalid_sign_in_token: Código de seguridad no válido
     otp_lost_help_html: Si perdiste al acceso a ambos, podés ponerte en contacto con %{email}
     seamless_external_login: Iniciaste sesión desde un servicio externo, así que la configuración de contraseña y correo electrónico no están disponibles.
     signed_in_as: 'Iniciaste sesión como:'
-    suspicious_sign_in_confirmation: Parece que no iniciaste sesión desde este dispositivo antes, y no iniciaste sesión durante un tiempo, así que te estamos enviando un código de seguridad a tu dirección de correo electrónico para confirmar que sos vos.
   verification:
     explanation_html: 'Podés <strong>verificarte a vos mismo como el propietario de los enlaces en los metadatos de tu perfil</strong>. Para eso, el sitio web del enlace debe contener un enlace de vuelta a tu perfil de Mastodon. El enlace en tu sitio <strong>debe</strong> tener un atributo <code>rel="me"</code>. El contenido del texto del enlace no importa. Acá tenés un ejemplo:'
     verification: Verificación

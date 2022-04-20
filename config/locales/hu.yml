@@ -170,7 +170,6 @@ hu:
       previous_strikes_description_html:
         one: Ezt a fiókot <strong>egyszer</strong> szankcionálták.
         other: Ezt a fiókot <strong>%{count}</strong> esetben szankcionálták.
-        zero: Ez a fiók <strong>makulátlan</strong>.
       promote: Előléptetés
       protocol: Protokoll
       public: Nyilvános
@@ -202,7 +201,6 @@ hu:
       security_measures:
         only_password: Csak jelszó
         password_and_2fa: Jelszó és kétlépcsős hitelesítés
-        password_and_sign_in_token: Jelszó és e-mail token
       sensitive: Kényes
       sensitized: kényesnek jelölve
       shared_inbox_url: Megosztott bejövő üzenetek URL
@@ -375,7 +373,7 @@ hu:
       enable: Engedélyezés
       enabled: Engedélyezve
       enabled_msg: Emodzsi sikeresen engedélyezve
-      image_hint: PNG (legfeljebb 50 kB-os)
+      image_hint: PNG vagy GIF, legfeljebb %{size}-os
       list: Felsorolás
       listed: Felsorolva
       new:
@@ -492,6 +490,7 @@ hu:
           other: Sikertelen próbálkozás %{count} különböző napon.
         no_failures_recorded: Nem rögzítettünk hibát.
         title: Elérhetőség
+        warning: Sikertelen volt az utolsó csatlakozási próbálkozás ehhez a szerverhez
       back_to_all: Mind
       back_to_limited: Korlátozott
       back_to_warning: Figyelmeztetés
@@ -531,7 +530,6 @@ hu:
       known_accounts:
         one: "%{count} ismert fiók"
         other: "%{count} ismert fiók"
-        zero: Nincs ismert fiók
       moderation:
         all: Mind
         limited: Korlátozott
@@ -776,6 +774,11 @@ hu:
     system_checks:
       database_schema_check:
         message_html: Vannak esedékes adatbázis migrációink. Kérlek, futtasd őket, hogy biztosítsd, hogy az alkalmazás megfelelően működjön
+      elasticsearch_running_check:
+        message_html: Nem sikerült az Elasticsearchhöz kapcsolódni. Ellenőrizze, hogy fut-e, vagy kapcsolja ki a teljes szöveges keresést.
+      elasticsearch_version_check:
+        message_html: 'Nem kompatibilis Elasticsearch verzió: %{value}'
+        version_comparison: Az Elasticsearch %{running_version} fut, de %{required_version} szükséges
       rules_check:
         action: Szerver szabályok menedzselése
         message_html: Még nem definiáltál egy szerver szabályt sem.
@@ -796,9 +799,8 @@ hu:
         disallow: Hivatkozás letiltása
         disallow_provider: Közzétevő letiltása
         shared_by_over_week:
-          one: Egy ember osztotta meg az elmúlt héten
-          other: "%{count} ember osztotta meg az elmúlt héten"
-          zero: Senki sem osztotta meg az elmúlt héten
+          one: Egy ember osztotta meg a múlt héten
+          other: "%{count} ember osztotta meg a múlt héten"
         title: Felkapott hivatkozások
         usage_comparison: "%{today} alkalommal lett ma megosztva, a tegnapi %{yesterday} alkalomhoz képest"
       pending_review: Áttekintésre vár
@@ -841,7 +843,6 @@ hu:
         used_by_over_week:
           one: Egy ember használta a múlt héten
           other: "%{count} ember használta a múlt héten"
-          zero: Senki sem használta a múlt héten
       title: Trendek
     warning_presets:
       add_new: Új hozzáadása
@@ -1236,9 +1237,6 @@ hu:
       new_followers_summary:
         one: Sőt, egy új követőd is lett, amióta nem jártál itt. Hurrá!
         other: Sőt, %{count} új követőd is lett, amióta nem jártál itt. Hihetetlen!
-      subject:
-        one: "Egy új értesítésed érkezett legutóbbi látogatásod óta \U0001F418"
-        other: "%{count} új értesítésed érkezett legutóbbi látogatásod óta \U0001F418"
       title: Amíg távol voltál…
     favourite:
       body: 'A bejegyzésedet kedvencnek jelölte %{name}:'
@@ -1439,7 +1437,7 @@ hu:
     disallowed_hashtags:
       one: 'tiltott hashtaget tartalmaz: %{tags}'
       other: 'tiltott hashtageket tartalmaz: %{tags}'
-    edited_at: 'Szerkesztve: %{date}'
+    edited_at_html: 'Szerkesztve: %{date}'
     errors:
       in_reply_not_found: Már nem létezik az a bejegyzés, melyre válaszolni szeretnél.
     open_in_web: Megnyitás a weben
@@ -1633,12 +1631,13 @@ hu:
       explanation: A Mastodon fiókod teljes mentését kérted. A mentés kész ás letölthető!
       subject: Az adataidról készült archív letöltésre kész
       title: Archiválás
-    sign_in_token:
-      details: 'Itt vannak a kísérlet részletei:'
-      explanation: 'Fiókodba történő belépési kísérletet fogtunk ismeretlen IP címről. Ha te vagy az, kérlek az alábbi biztonsági kódot írd be a bejelentkező oldal ezt kérő részén:'
-      further_actions: 'Ha nem te voltál, változtasd meg a jelszavadat és engedélyezd a két-faktoros azonosítást a fiókodban. Itt megteheted:'
-      subject: Erősítsd meg a megkísérelt belépést
-      title: Belépési kísérlet
+    suspicious_sign_in:
+      change_password: módosítsd a jelszavad
+      details: 'Itt vannak a bejelentkezés részletei:'
+      explanation: Egy új IP-címről történő bejelentkezést észleltünk.
+      further_actions_html: Ha nem te voltál, akkor azt javasoljuk, hogy azonnal %{action} és engedélyezd a kétlépcsős hitelesítést, hogy biztonságban tudd a fiókodat.
+      subject: A fiókodat egy új IP-címről érték el
+      title: Új bejelentkezés
     warning:
       appeal: Fellebbezés beküldése
       appeal_description: Ha azt gondolod, hogy ez hibás, beküldhetsz egy fellebbezést a(z) %{instance} szerver csapatának.
@@ -1689,13 +1688,10 @@ hu:
       title: Üdv a fedélzeten, %{name}!
   users:
     follow_limit_reached: Nem követhetsz több, mint %{limit} embert
-    generic_access_help_html: Nem tudod elérni a fiókodat? Segítségért lépj kapcsolatba velünk ezen %{email}
     invalid_otp_token: Érvénytelen ellenőrző kód
-    invalid_sign_in_token: Érvénytelen biztonsági kód
     otp_lost_help_html: Ha mindkettőt elvesztetted, kérhetsz segítséget itt %{email}
     seamless_external_login: Külső szolgáltatáson keresztül jelentkeztél be, így a jelszó és e-mail beállítások nem elérhetőek.
     signed_in_as: Bejelentkezve mint
-    suspicious_sign_in_confirmation: Úgy tűnik, erről az eszközről még sosem léptél be és egy ideje már nem láttunk, ezért egy biztonsági kódot küldünk az email címedre, hogy megerősítsd, tényleg te vagy az.
   verification:
     explanation_html: 'A profilodon <strong>hitelesítheted magad, mint az itt található linkek tulajdonosa</strong>. Ehhez a linkelt weboldalnak tartalmaznia kell egy linket vissza a Mastodon profilodra. Ennek <strong>tartalmaznia kell</strong> a <code>rel="me"</code> attribútumot. A link szövege bármi lehet. Itt egy példa:'
     verification: Hitelesítés

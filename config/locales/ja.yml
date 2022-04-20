@@ -189,7 +189,6 @@ ja:
       security_measures:
         only_password: パスワードのみ
         password_and_2fa: パスワードと 2FA
-        password_and_sign_in_token: パスワードとメールトークン
       sensitive: 閲覧注意
       sensitized: 閲覧注意としてマーク済み
       shared_inbox_url: Shared inbox URL
@@ -361,7 +360,7 @@ ja:
       enable: 有効化
       enabled: 有効
       enabled_msg: 絵文字を有効化しました
-      image_hint: 50KBまでのPNG画像を利用できます
+      image_hint: "%{size}までのPNGまたはGIF画像を利用できます"
       list: 表示
       listed: 表示
       new:
@@ -474,10 +473,6 @@ ja:
       delivery_error_hint: "%{count} 日間配送ができない場合は、自動的に配送不可としてマークされます。"
       destroyed_msg: "%{domain} からのデータは、すぐに削除されるように、キューに追加されました。"
       empty: ドメインが見つかりませんでした。
-      known_accounts:
-        one: 既知のアカウントが%{count}件あります
-        other: 既知のアカウントが%{count}件あります
-        zero: 既知のアカウントはありません
       moderation:
         all: すべて
         limited: 制限あり
@@ -696,6 +691,9 @@ ja:
       title: 投稿一覧
       with_media: メディアあり
     strikes:
+      actions:
+        mark_statuses_as_sensitive: "%{name} さんが %{target} さんの投稿を閲覧注意としてマークしました"
+        sensitive: "%{name} さんが %{target} さんのアカウントを閲覧注意としてマークしました"
       appeal_approved: 抗議済み
       appeal_pending: 保留中の抗議
     system_checks:
@@ -713,7 +711,7 @@ ja:
     trends:
       allow: 許可
       approved: 承認
-      disallow: 不許可
+      disallow: 拒否
       links:
         allow: リンクの許可
         allow_provider: 発行者の承認
@@ -728,8 +726,11 @@ ja:
         title: 発行者
       rejected: 拒否
       statuses:
-        allow: 投稿を許可する
-        disallow: 投稿を許可しない
+        allow: 掲載を許可
+        allow_account: 投稿者を許可
+        disallow: 掲載を拒否
+        disallow_account: 投稿者を拒否
+        title: トレンド投稿
       tags:
         current_score: 現在のスコア %{score}
         dashboard:
@@ -914,6 +915,7 @@ ja:
     explore_mastodon: "%{title}を探索"
   disputes:
     strikes:
+      action_taken: 取られた措置
       appeal: 抗議
       appeal_submitted_at: 抗議が送信されました
       appeals:
@@ -923,8 +925,13 @@ ja:
       recipient: 送信元
       title: "%{date}に%{action}"
       title_actions:
+        delete_statuses: 投稿の削除
         disable: アカウント凍結
+        mark_statuses_as_sensitive: 投稿を閲覧注意としてマーク
         none: 警告
+        sensitive: アカウントを閲覧注意としてマーク
+        silence: アカウントの制限
+        suspend: アカウントの一時停止
   domain_validator:
     invalid_domain: は無効なドメイン名です
   errors:
@@ -1097,14 +1104,15 @@ ja:
     carry_mutes_over_text: このユーザーは、あなたがミュートしていた %{acct} から引っ越しました。
     copy_account_note_text: このユーザーは %{acct} から引っ越しました。これは以前のメモです。
   notification_mailer:
+    admin:
+      sign_up:
+        subject: "%{name} がサインアップしました"
     digest:
       action: 全ての通知を表示
       body: '最後のログイン（%{since}）からの出来事:'
       mention: "%{name} さんがあなたに返信しました:"
       new_followers_summary:
         other: また、離れている間に%{count} 人の新たなフォロワーを獲得しました！
-      subject:
-        other: "新しい%{count}件の通知 \U0001F418"
       title: 不在の間に…
     favourite:
       body: "%{name} さんにお気に入り登録された、あなたの投稿があります:"
@@ -1297,7 +1305,7 @@ ja:
     default_language: UIの表示言語
     disallowed_hashtags:
       other: '許可されていないハッシュタグが含まれています: %{tags}'
-    edited_at: "%{date} に編集"
+    edited_at_html: "%{date} 編集済み"
     errors:
       in_reply_not_found: あなたが返信しようとしている投稿は存在しないようです。
     open_in_web: Webで開く
@@ -1482,12 +1490,6 @@ ja:
       explanation: Mastodonアカウントのアーカイブを受け付けました。今すぐダウンロードできます！
       subject: アーカイブの準備ができました
       title: アーカイブの取り出し
-    sign_in_token:
-      details: '検出したログインの詳細は以下のとおりです:'
-      explanation: '認識できないIPアドレスから、あなたのアカウントへのログインを検出しました。あなたがログインしようとしている場合は、ログインページに以下のセキュリティコードを入力してください:'
-      further_actions: '心当たりがない場合、パスワードを変更し二段階認証を有効にしてください。こちらから設定できます:'
-      subject: ログイン試行を確認してください
-      title: ログインを検出しました
     warning:
       appeal: 抗議を送信
       categories:
@@ -1495,18 +1497,23 @@ ja:
         violation: コンテンツは以下のコミュニティガイドラインに違反しています
       explanation:
         disable: アカウントは使用できませんが、プロフィールやその他のデータはそのまま残ります。 データのバックアップをリクエストしたり、アカウント設定を変更したり、アカウントを削除したりできます。
-        sensitive: 今後、アップロードされたすべてのメディアファイルは閲覧注意してマークされ、クリックスルー警告の背後に隠されます。
+        mark_statuses_as_sensitive: あなたのいくつかの投稿は、 %{instance} のモデレータによって閲覧注意としてマークされています。これは、プレビューが表示される前にユーザが投稿内のメディアをタップする必要があることを意味します。あなたは将来投稿する際に自分自身でメディアを閲覧注意としてマークすることができます。
+        sensitive: 今後、アップロードされたすべてのメディアファイルは閲覧注意としてマークされ、クリック解除式の警告で覆われるようになります。
         silence: アカウントが制限されています。このサーバーでは既にフォローしている人だけがあなたの投稿を見ることができます。 様々な発見機能から除外されるかもしれません。他の人があなたを手動でフォローすることは可能です。
       reason: '理由:'
       subject:
         disable: あなたのアカウント %{acct} は凍結されました
+        mark_statuses_as_sensitive: あなたの %{acct} の投稿は閲覧注意としてマークされました
         none: "%{acct} に対する警告"
+        sensitive: あなたの %{acct} の投稿はこれから閲覧注意としてマークされます
         silence: あなたのアカウント %{acct} はサイレンスにされました
         suspend: あなたのアカウント %{acct} は停止されました
       title:
         delete_statuses: 投稿が削除されました
         disable: アカウントが凍結されました
+        mark_statuses_as_sensitive: 閲覧注意としてマークされた投稿
         none: 警告
+        sensitive: 閲覧注意としてマークされたアカウント
         silence: アカウントがサイレンスにされました
         suspend: アカウントが停止されました
     welcome:
@@ -1528,13 +1535,10 @@ ja:
       title: ようこそ、%{name}！
   users:
     follow_limit_reached: あなたは現在 %{limit} 人以上フォローできません
-    generic_access_help_html: アクセスできませんか？ %{email} に問い合わせることができます。
     invalid_otp_token: 二段階認証コードが間違っています
-    invalid_sign_in_token: 無効なセキュリティコードです
     otp_lost_help_html: どちらも使用できない場合、%{email} に連絡を取ると解決できるかもしれません
     seamless_external_login: あなたは外部サービスを介してログインしているため、パスワードとメールアドレスの設定は利用できません。
     signed_in_as: '下記でログイン中:'
-    suspicious_sign_in_confirmation: おかえりなさい。このデバイスからのアクセスは初めてなので、セキュリティ確保のためにメールでセキュリティーコードを送信しました。
   verification:
     explanation_html: <strong>プロフィール内のリンクの所有者であることを認証することができます</strong>。そのためにはリンクされたウェブサイトにMastodonプロフィールへのリンクが含まれている必要があります。リンクには<code>rel="me"</code>属性を<strong>必ず</strong>与えなければなりません。リンクのテキストについては重要ではありません。以下は例です：
     verification: 認証
