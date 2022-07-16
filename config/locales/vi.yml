@@ -35,7 +35,7 @@ vi:
     status_count_after:
       other: tút
     status_count_before: Nơi lưu giữ
-    tagline: Theo dõi bạn bè và khám phá thế giới
+    tagline: Mạng xã hội liên hợp
     terms: Điều khoản dịch vụ
     unavailable_content: Giới hạn chung
     unavailable_content_description:
@@ -51,7 +51,7 @@ vi:
     user_count_after:
       other: người dùng
     user_count_before: Nhà của
-    what_is_mastodon: Mastodon
+    what_is_mastodon: Mastodon là gì?
   accounts:
     choices_html: "%{name} tôn vinh:"
     endorsements_hint: Bạn có thể tôn vinh những người bạn theo dõi và họ sẽ hiển thị ở giao diện web.
@@ -63,9 +63,9 @@ vi:
     instance_actor_flash: Tài khoản này được dùng để đại diện cho máy chủ và không phải là người thật. Đừng bao giờ vô hiệu hóa tài khoản này.
     joined: Đã tham gia %{date}
     last_active: online
-    link_verified_on: Liên kết này đã được xác thực quyền sở hữu vào %{date}
+    link_verified_on: Liên kết này đã được xác minh quyền sở hữu vào %{date}
     media: Media
-    moved_html: "%{name} đã đổi thành %{new_profile_link}:"
+    moved_html: "%{name} đã chuyển sang %{new_profile_link}:"
     network_hidden: Dữ liệu đã bị ẩn
     nothing_here: Trống trơn!
     people_followed_by: Những người %{name} theo dõi
@@ -77,10 +77,8 @@ vi:
     posts_tab_heading: Tút
     posts_with_replies: Trả lời
     roles:
-      admin: Quản trị viên
       bot: Tài khoản Bot
       group: Nhóm
-      moderator: Kiểm duyệt viên
     unavailable: Tài khoản bị đình chỉ
     unfollow: Ngưng theo dõi
   admin:
@@ -99,14 +97,19 @@ vi:
       avatar: Ảnh đại diện
       by_domain: Máy chủ
       change_email:
-        changed_msg: Email tài khoản đã thay đổi thành công!
+        changed_msg: Email đã thay đổi thành công!
         current_email: Email hiện tại
         label: Thay đổi email
         new_email: Email mới
         submit: Thay đổi email
         title: Thay đổi email cho %{username}
+      change_role:
+        changed_msg: Vai trò đã thay đổi thành công!
+        label: Đổi vai trò
+        no_role: Chưa có vai trò
+        title: Thay đổi vai trò %{username}
       confirm: Phê duyệt
-      confirmed: Đã xác thực
+      confirmed: Đã xác minh
       confirming: Chờ xác nhận
       custom: Tùy chỉnh
       delete: Xóa dữ liệu
@@ -114,16 +117,16 @@ vi:
       demote: Xóa vai trò
       destroyed_msg: Dữ liệu %{username} sẽ được lên lịch xóa ngay bây giờ
       disable: Khóa
-      disable_sign_in_token_auth: Tắt xác thực bằng email
-      disable_two_factor_authentication: Vô hiệu hóa xác thực hai bước
-      disabled: Đã vô hiệu hóa
+      disable_sign_in_token_auth: Vô hiệu hóa xác minh bằng email
+      disable_two_factor_authentication: Vô hiệu hóa xác minh 2 bước
+      disabled: Tạm khóa
       display_name: Tên hiển thị
       domain: Máy chủ
       edit: Chỉnh sửa
       email: Email
       email_status: Trạng thái
       enable: Mở lại
-      enable_sign_in_token_auth: Bật xác thực bằng email
+      enable_sign_in_token_auth: Bật xác minh bằng email
       enabled: Đã duyệt
       enabled_msg: Đã kích hoạt lại tài khoản %{username} thành công
       followers: Người theo dõi
@@ -148,13 +151,15 @@ vi:
         active: Hoạt động
         all: Toàn bộ
         pending: Chờ xử lý
+        silenced: Hạn chế
         suspended: Vô hiệu hóa
         title: Trạng thái
       moderation_notes: Nhật ký kiểm duyệt
       most_recent_activity: Hoạt động lần cuối
-      most_recent_ip: IP gần đây nhất
+      most_recent_ip: IP gần nhất
       no_account_selected: Không có tài khoản nào thay đổi vì không có tài khoản nào được chọn
       no_limits_imposed: Bình thường
+      no_role_assigned: Chưa có vai trò
       not_subscribed: Chưa đăng ký
       pending: Chờ duyệt
       perform_full_suspension: Vô hiệu hóa
@@ -174,18 +179,13 @@ vi:
       removed_avatar_msg: Đã xóa bỏ ảnh đại diện của %{username}
       removed_header_msg: Đã xóa bỏ ảnh bìa của %{username}
       resend_confirmation:
-        already_confirmed: Người dùng này đã được xác thực
+        already_confirmed: Người dùng này đã được xác minh
         send: Gửi lại email xác nhận
         success: Email xác nhận đã gửi thành công!
       reset: Đặt lại
       reset_password: Đặt lại mật khẩu
       resubscribe: Đăng ký lại
       role: Vai trò
-      roles:
-        admin: Quản trị viên
-        moderator: Kiểm duyệt viên
-        staff: Đội ngũ
-        user: Người dùng
       search: Tìm kiếm
       search_same_email_domain: Tra cứu email
       search_same_ip: Tra cứu IP
@@ -198,7 +198,7 @@ vi:
       show:
         created_reports: Gửi báo cáo
         targeted_reports: Bị báo cáo
-      silence: Ẩn
+      silence: Hạn chế
       silenced: Hạn chế
       statuses: Tút
       strikes: Lịch sử kiểm duyệt
@@ -210,7 +210,7 @@ vi:
       title: Tài khoản
       unblock_email: Mở khóa địa chỉ email
       unblocked_email_msg: Mở khóa thành công địa chỉ email của %{username}
-      unconfirmed_email: Email chưa được xác thực
+      unconfirmed_email: Email chưa được xác minh
       undo_sensitized: Đánh dấu bình thường
       undo_silenced: Bỏ hạn chế
       undo_suspension: Bỏ vô hiệu hóa
@@ -219,7 +219,7 @@ vi:
       unsuspended_msg: Đã kích hoạt lại %{username} thành công
       username: Tài khoản
       view_domain: Xem mô tả tài khoản này
-      warn: Cảnh cáo
+      warn: Nhắc
       web: Web
       whitelisted: Danh sách trắng
     action_logs:
@@ -228,8 +228,8 @@ vi:
         approve_user: Chấp nhận người dùng
         assigned_to_self_report: Tự xử lý báo cáo
         change_email_user: Đổi email người dùng
-        confirm_user: Xác thực người dùng
-        create_account_warning: Cảnh cáo người dùng
+        confirm_user: Xác minh người dùng
+        create_account_warning: Nhắc nhở người dùng
         create_announcement: Tạo thông báo mới
         create_custom_emoji: Tạo emoji
         create_domain_allow: Cho phép máy chủ
@@ -249,10 +249,10 @@ vi:
         destroy_unavailable_domain: Xóa máy chủ không khả dụng
         disable_2fa_user: Vô hiệu hóa 2FA
         disable_custom_emoji: Vô hiệu hóa emoji
-        disable_sign_in_token_auth_user: Tắt xác thực bằng email cho người dùng
+        disable_sign_in_token_auth_user: Vô hiệu hóa xác minh bằng email cho người dùng
         disable_user: Vô hiệu hóa đăng nhập
         enable_custom_emoji: Cho phép emoji
-        enable_sign_in_token_auth_user: Bật xác thực bằng email cho người dùng
+        enable_sign_in_token_auth_user: Bật xác minh bằng email cho người dùng
         enable_user: Bỏ vô hiệu hóa đăng nhập
         memorialize_account: Đánh dấu tưởng niệm
         promote_user: Chỉ định vai trò
@@ -263,12 +263,12 @@ vi:
         reset_password_user: Đặt lại mật khẩu
         resolve_report: Xử lý báo cáo
         sensitive_account: Áp đặt nhạy cảm
-        silence_account: Áp đặt hạn chế
+        silence_account: Áp đặt ẩn
         suspend_account: Áp đặt vô hiệu hóa
         unassigned_report: Báo cáo chưa xử lý
         unblock_email_account: Mở khóa địa chỉ email
         unsensitive_account: Bỏ nhạy cảm
-        unsilence_account: Bỏ hạn chế
+        unsilence_account: Bỏ ẩn
         unsuspend_account: Bỏ vô hiệu hóa
         update_announcement: Cập nhật thông báo
         update_custom_emoji: Cập nhật emoji
@@ -279,8 +279,8 @@ vi:
         approve_user_html: "%{name} đã chấp nhận đăng ký từ %{target}"
         assigned_to_self_report_html: "%{name} tự xử lý báo cáo %{target}"
         change_email_user_html: "%{name} đã thay đổi địa chỉ email của %{target}"
-        confirm_user_html: "%{name} đã xác thực địa chỉ email của %{target}"
-        create_account_warning_html: "%{name} đã gửi cảnh cáo %{target}"
+        confirm_user_html: "%{name} đã xác minh địa chỉ email của %{target}"
+        create_account_warning_html: "%{name} đã nhắc nhở %{target}"
         create_announcement_html: "%{name} tạo thông báo mới %{target}"
         create_custom_emoji_html: "%{name} đã tải lên biểu tượng cảm xúc mới %{target}"
         create_domain_allow_html: "%{name} kích hoạt liên hợp với %{target}"
@@ -298,12 +298,12 @@ vi:
         destroy_ip_block_html: "%{name} bỏ chặn IP %{target}"
         destroy_status_html: "%{name} đã xóa tút của %{target}"
         destroy_unavailable_domain_html: "%{name} tiếp tục phân phối với máy chủ %{target}"
-        disable_2fa_user_html: "%{name} đã vô hiệu hóa xác thực hai bước của %{target}"
+        disable_2fa_user_html: "%{name} đã vô hiệu hóa xác minh hai bước của %{target}"
         disable_custom_emoji_html: "%{name} đã ẩn emoji %{target}"
-        disable_sign_in_token_auth_user_html: "%{name} tắt xác thực email của %{target}"
+        disable_sign_in_token_auth_user_html: "%{name} vô hiệu hóa xác minh email của %{target}"
         disable_user_html: "%{name} vô hiệu hóa đăng nhập %{target}"
         enable_custom_emoji_html: "%{name} cho phép Emoji %{target}"
-        enable_sign_in_token_auth_user_html: "%{name} bật xác thực email của %{target}"
+        enable_sign_in_token_auth_user_html: "%{name} bật xác minh email của %{target}"
         enable_user_html: "%{name} bỏ vô hiệu hóa đăng nhập %{target}"
         memorialize_account_html: "%{name} đã biến tài khoản %{target} thành một trang tưởng niệm"
         promote_user_html: "%{name} chỉ định vai trò cho %{target}"
@@ -417,6 +417,7 @@ vi:
       destroyed_msg: Đã thôi chặn máy chủ
       domain: Máy chủ
       edit: Chỉnh sửa máy chủ bị chặn
+      existing_domain_block: Bạn đã hạn chế %{name} trước đó.
       existing_domain_block_html: Bạn đã áp đặt các giới hạn chặt chẽ hơn cho %{name}, trước tiên bạn cần <a href="%{unblock_url}">bỏ chặn nó</a>.
       new:
         create: Tạo chặn
@@ -503,6 +504,7 @@ vi:
       delivery:
         all: Toàn bộ
         clear: Xóa phân phối lỗi
+        failing: Mất kết nối
         restart: Khởi động lại phân phối
         stop: Ngưng phân phối
         unavailable: Không khả dụng
@@ -578,7 +580,7 @@ vi:
         notes:
           other: "%{count} kiểm duyệt"
       action_log: Nhật ký kiểm duyệt
-      action_taken_by: Hành động được thực hiện bởi
+      action_taken_by: Quyết định bởi
       actions:
         delete_description_html: Những tút bị báo cáo sẽ được xóa và 1 lần cảnh cáo sẽ được ghi lại để giúp bạn lưu ý về tài khoản này trong tương lai.
         mark_as_sensitive_description_html: Media trong các tút bị báo cáo sẽ được đánh dấu là nhạy cảm và 1 lần cảnh cáo sẽ được ghi lại để giúp bạn nắm bắt nhanh những vi phạm của cùng một tài khoản.
@@ -631,6 +633,65 @@ vi:
       unresolved: Chờ xử lý
       updated_at: Cập nhật lúc
       view_profile: Xem trang hồ sơ
+    roles:
+      add_new: Thêm vai trò
+      assigned_users:
+        other: "%{count} người"
+      categories:
+        administration: Quản trị viên
+        devops: Nhà phát triển
+        invites: Lời mời
+        moderation: Kiểm duyệt
+        special: Đặc biệt
+      delete: Xóa
+      description_html: Thông qua <strong>vai trò người dùng</strong>, bạn có thể tùy chỉnh những tính năng và vị trí của Mastodon mà người dùng có thể truy cập.
+      edit: Sửa vai trò '%{name}'
+      everyone: Quyền hạn mặc định
+      everyone_full_description_html: Đây <strong>vai trò cơ bản</strong> ảnh hưởng tới <strong>mọi người dùng khác</strong>, kể cả những người không có vai trò được chỉ định. Tất cả các vai trò khác đều kế thừa quyền từ vai trò đó.
+      permissions_count:
+        other: "%{count} quyền hạn"
+      privileges:
+        administrator: Quản trị viên
+        administrator_description: Người dùng này có thể truy cập mọi quyền hạn
+        delete_user_data: Xóa dữ liệu người dùng
+        delete_user_data_description: Cho phép xóa dữ liệu của người dùng khác lập tức
+        invite_users: Mời người dùng
+        invite_users_description: Cho phép mời những người mới vào máy chủ
+        manage_announcements: Quản lý thông báo
+        manage_announcements_description: Cho phép quản lý thông báo trên máy chủ
+        manage_appeals: Quản lý kháng cáo
+        manage_appeals_description: Cho phép xem xét kháng cáo đối với các hành động kiểm duyệt
+        manage_blocks: Quản lý chặn
+        manage_blocks_description: Cho phép chặn các nhà cung cấp e-mail và địa chỉ IP
+        manage_custom_emojis: Quản lý emoji
+        manage_custom_emojis_description: Cho phép quản lý các emoji tùy chỉnh trên máy chủ
+        manage_federation: Quản lý liên hợp
+        manage_federation_description: Cho phép chặn hoặc liên hợp với các máy chủ khác và kiểm soát khả năng phân phối
+        manage_invites: Quản lý lời mời
+        manage_invites_description: Cho phép mở và đóng các lời mời đăng ký
+        manage_reports: Quản lý báo cáo
+        manage_reports_description: Cho phép xem xét các báo cáo và thực hiện hành động kiểm duyệt đối với chúng
+        manage_roles: Quản lý vai trò
+        manage_roles_description: Cho phép quản lý và chỉ định các vai trò nhỏ hơn họ
+        manage_rules: Quản lý quy tắc máy chủ
+        manage_rules_description: Cho phép thay đổi quy tắc máy chủ
+        manage_settings: Quản lý thiết lập
+        manage_settings_description: Cho phép thay đổi thiết lập máy chủ
+        manage_taxonomies: Quản lý phân loại
+        manage_taxonomies_description: Cho phép đánh giá nội dung xu hướng và cập nhật cài đặt hashtag
+        manage_user_access: Quản lý người dùng truy cập
+        manage_user_access_description: Cho phép vô hiệu hóa xác thực hai bước của người dùng khác, thay đổi địa chỉ email và đặt lại mật khẩu của họ
+        manage_users: Quản lý người dùng
+        manage_users_description: Cho phép xem thông tin chi tiết của người dùng khác và thực hiện các hành động kiểm duyệt đối với họ
+        manage_webhooks: Quản lý Webhook
+        manage_webhooks_description: Cho phép thiết lập webhook cho các sự kiện quản trị
+        view_audit_log: Xem nhật ký
+        view_audit_log_description: Cho phép xem lịch sử của các hành động quản trị trên máy chủ
+        view_dashboard: Xem quản trị
+        view_dashboard_description: Cho phép truy cập trang tổng quan và các chỉ số khác
+        view_devops: Nhà phát triển
+        view_devops_description: Cho phép truy cập trang tổng quan Sidekiq và pgHero
+      title: Danh sách vai trò
     rules:
       add_new: Thêm quy tắc
       delete: Xóa bỏ
@@ -683,9 +744,6 @@ vi:
         deletion:
           desc_html: Cho phép mọi người xóa tài khoản của họ
           title: Xóa tài khoản
-        min_invite_role:
-          disabled: Không một ai
-          title: Cho phép lời mời bằng cách
         require_invite_text:
           desc_html: Khi chọn phê duyệt người dùng thủ công, hiện “Tại sao bạn muốn đăng ký?” thay cho tùy chọn nhập
           title: Người đăng ký mới phải nhập mã mời tham gia
@@ -697,10 +755,7 @@ vi:
         title: Chế độ đăng ký
       show_known_fediverse_at_about_page:
         desc_html: Nếu tắt, bảng tin sẽ chỉ hiển thị nội dung do người dùng của máy chủ này tạo ra
-        title: Bao gồm nội dung từ mạng liên hợp trên bảng tin không được xác thực
-      show_staff_badge:
-        desc_html: Hiện huy hiệu đội ngũ trên trang người dùng
-        title: Hiện huy hiệu đội ngũ
+        title: Bao gồm nội dung từ mạng liên hợp trên bảng tin không được cho phép
       site_description:
         desc_html: Nội dung giới thiệu về máy chủ. Mô tả những gì làm cho máy chủ Mastodon này đặc biệt và bất cứ điều gì quan trọng khác. Bạn có thể dùng các thẻ HTML, đặc biệt là <code>&lt;a&gt;</code> và <code>&lt;em&gt;</code>.
         title: Mô tả máy chủ
@@ -718,8 +773,8 @@ vi:
         desc_html: Bản xem trước thông qua OpenGraph và API. Khuyến nghị 1200x630px
         title: Hình thu nhỏ của máy chủ
       timeline_preview:
-        desc_html: Hiển thị dòng thời gian công khai trên trang đích và cho phép API truy cập vào dòng thời gian công khai mà không cần xác thực
-        title: Cho phép truy cập không xác thực vào dòng thời gian công cộng
+        desc_html: Hiển thị dòng thời gian công khai trên trang đích và cho phép API truy cập vào dòng thời gian công khai mà không cần cho phép
+        title: Cho phép truy cập vào dòng thời gian công cộng không cần cho phép
       title: Cài đặt trang web
       trendable_by_default:
         desc_html: Ảnh hưởng đến các hashtag chưa được cho phép trước đây
@@ -784,6 +839,7 @@ vi:
           other: "%{count} người chia sẻ tuần rồi"
         title: Liên kết xu hướng
         usage_comparison: Chia sẻ %{today} lần hôm nay, so với %{yesterday} lần hôm qua
+      only_allowed: Chỉ cho phép
       pending_review: Đang chờ
       preview_card_providers:
         allowed: Liên kết từ nguồn đăng này có thể thành xu hướng
@@ -823,12 +879,32 @@ vi:
         used_by_over_week:
           other: "%{count} người dùng tuần rồi"
       title: Xu hướng
+      trending: Xu hướng
     warning_presets:
       add_new: Thêm mới
       delete: Xóa bỏ
       edit_preset: Sửa mẫu có sẵn
-      empty: Bạn chưa thêm mẫu có sẵn nào cả.
-      title: Quản lý mẫu cảnh cáo
+      empty: Bạn chưa thêm mẫu nhắc nhở nào cả.
+      title: Quản lý mẫu nhắc nhở
+    webhooks:
+      add_new: Thêm endpoint
+      delete: Xóa bỏ
+      description_html: "<strong>Webhook</strong> cho phép Mastodon gửi nhận <strong>thông báo đẩy thời gian thật</strong> về những sự kiện cho ứng dụng thứ ba của bạn, cho ứng dụng của bạn có thể <strong>tự động kích hoạt reaction</strong>."
+      disable: Tắt
+      disabled: Đã tắt
+      edit: Sửa endpoint
+      empty: Bạn chưa thiết lập webhook endpoint nào.
+      enable: Bật
+      enabled: Hoạt động
+      enabled_events:
+        other: "%{count} sự kiện đã bật"
+      events: Sự kiện
+      new: Webhook mới
+      rotate_secret: Xoay bí mật
+      secret: Token đăng nhập
+      status: Trạng thái
+      title: Webhook
+      webhook: Webhook
   admin_mailer:
     new_appeal:
       actions:
@@ -893,7 +969,6 @@ vi:
   applications:
     created: Đơn đăng ký được tạo thành công
     destroyed: Đã xóa đơn đăng ký
-    invalid_url: Cung cấp URL không hợp lệ
     regenerate_token: Tạo lại mã truy cập
     token_regenerated: Mã truy cập được tạo lại thành công
     warning: Hãy rất cẩn thận với dữ liệu này. Không bao giờ chia sẻ nó với bất cứ ai!
@@ -909,11 +984,11 @@ vi:
       prefix_invited_by_user: "@%{name} mời bạn tham gia máy chủ Mastodon này!"
       prefix_sign_up: Tham gia Mastodon ngay hôm nay!
       suffix: Với tài khoản, bạn sẽ có thể theo dõi mọi người, đăng tút và nhắn tin với người dùng từ bất kỳ máy chủ Mastodon khác!
-    didnt_get_confirmation: Gửi lại email xác thực?
+    didnt_get_confirmation: Gửi lại email xác minh?
     dont_have_your_security_key: Bạn có khóa bảo mật chưa?
     forgot_password: Quên mật khẩu
     invalid_reset_password_token: Mã đặt lại mật khẩu không hợp lệ hoặc hết hạn. Vui lòng yêu cầu một cái mới.
-    link_to_otp: Nhập mã xác thực từ điện thoại hoặc mã phục hồi
+    link_to_otp: Nhập mã xác minh từ điện thoại hoặc mã khôi phục
     link_to_webauth: Nhập khóa bảo mật từ thiết bị
     log_in_with: Đăng nhập bằng
     login: Đăng nhập
@@ -926,18 +1001,18 @@ vi:
       saml: SAML
     register: Đăng ký
     registration_closed: "%{instance} tạm ngưng đăng ký mới"
-    resend_confirmation: Gửi lại email xác thực
+    resend_confirmation: Gửi lại email xác minh
     reset_password: Đặt lại mật khẩu
     security: Bảo mật
     set_new_password: Đặt mật khẩu mới
     setup:
       email_below_hint_html: Nếu địa chỉ email dưới đây không chính xác, bạn có thể thay đổi địa chỉ tại đây và nhận email xác nhận mới.
-      email_settings_hint_html: Email xác thực đã được gửi tới %{email}. Nếu địa chỉ email đó không chính xác, bạn có thể thay đổi nó trong cài đặt tài khoản.
+      email_settings_hint_html: Email xác minh đã được gửi tới %{email}. Nếu địa chỉ email đó không chính xác, bạn có thể thay đổi nó trong cài đặt tài khoản.
       title: Thiết lập
     status:
       account_status: Trạng thái tài khoản
-      confirming: Đang chờ xác thực email.
-      functional: Tài khoản của bạn đã được xác thực.
+      confirming: Đang chờ xác minh email.
+      functional: Tài khoản của bạn đã được xác minh.
       pending: Đơn đăng ký của bạn đang chờ phê duyệt. Điều này có thể mất một thời gian. Bạn sẽ nhận được email nếu đơn đăng ký của bạn được chấp thuận.
       redirecting_to: Tài khoản của bạn không hoạt động vì hiện đang chuyển hướng đến %{acct}.
       view_strikes: Xem những lần cảnh cáo cũ
@@ -968,7 +1043,7 @@ vi:
   date:
     formats:
       default: "%-d %B, %Y"
-      with_month_name: "%B %d, %Y"
+      with_month_name: "%-d %B, %Y"
   datetime:
     distance_in_words:
       about_x_hours: "%{count} giờ"
@@ -1006,7 +1081,7 @@ vi:
     explore_mastodon: Thành viên %{title}
   disputes:
     strikes:
-      action_taken: Hành động thực hiện
+      action_taken: Hành động áp dụng
       appeal: Khiếu nại
       appeal_approved: Khiếu nại đã được chấp nhận và cảnh cáo không còn giá trị
       appeal_rejected: Khiếu nại bị từ chối
@@ -1014,10 +1089,12 @@ vi:
       appealed_msg: Khiếu nại của bạn đã được gửi đi. Nếu nó được chấp nhận, bạn sẽ nhận được thông báo.
       appeals:
         submit: Gửi khiếu nại
+      approve_appeal: Chấp nhận kháng cáo
       associated_report: Báo cáo đính kèm
       created_at: Ngày
       description_html: Đây là những cảnh cáo và áp đặt kiểm duyệt đối với bạn bởi đội ngũ %{instance}.
       recipient: Người nhận
+      reject_appeal: Từ chối kháng cáo
       status: 'Tút #%{id}'
       status_removed: Tút này đã được xóa khỏi hệ thống
       title: "%{action} từ %{date}"
@@ -1025,8 +1102,8 @@ vi:
         delete_statuses: Xóa tút
         disable: Đóng băng tài khoản
         mark_statuses_as_sensitive: Đánh dấu tút là nhạy cảm
-        none: Cảnh cáo
-        sensitive: Đánh dấu người dùng là nhạy cảm
+        none: Nhắc nhở
+        sensitive: Đánh dấu tài khoản là nhạy cảm
         silence: Hạn chế tài khoản
         suspend: Vô hiệu hóa tài khoản
       your_appeal_approved: Khiếu nại của bạn được chấp nhận
@@ -1080,15 +1157,23 @@ vi:
       public: Tin công khai
       thread: Thảo luận
     edit:
+      add_keyword: Thêm từ khoá
+      keywords: Từ khóa
       title: Chỉnh sửa bộ lọc
     errors:
+      deprecated_api_multiple_keywords: Không thể thay đổi các tham số này từ ứng dụng này vì chúng áp dụng cho nhiều hơn một từ khóa bộ lọc. Sử dụng ứng dụng mới hơn hoặc giao diện web.
       invalid_context: Bối cảnh không hợp lệ hoặc không có
-      invalid_irreversible: Bộ lọc chỉ hoạt động với bảng tin hoặc nội dung thông báo
     index:
+      contexts: Bộ lọc %{contexts}
       delete: Xóa bỏ
       empty: Chưa có bộ lọc nào.
+      expires_in: Hết hạn trong %{distance}
+      expires_on: Hết hạn vào %{date}
+      keywords:
+        other: "%{count} từ khóa"
       title: Bộ lọc
     new:
+      save: Lưu thành bộ lọc mới
       title: Thêm bộ lọc mới
   footer:
     developers: Phát triển
@@ -1152,11 +1237,11 @@ vi:
       limit: Bạn đã đạt đến số lượng danh sách tối đa
   login_activities:
     authentication_methods:
-      otp: xác thực 2 bước
+      otp: xác minh 2 bước
       password: mật khẩu
       sign_in_token: mã an toàn email
       webauthn: khóa bảo mật
-    description_html: Nếu có lần đăng nhập đáng ngờ, hãy đổi ngay mật khẩu và bật xác thực hai bước.
+    description_html: Nếu có lần đăng nhập đáng ngờ, hãy đổi ngay mật khẩu và bật xác minh 2 bước.
     empty: Không có lịch sử đăng nhập
     failed_sign_in_html: Đăng nhập thất bại bằng %{method} từ %{ip} (%{browser})
     successful_sign_in_html: Đăng nhập thành công bằng %{method} từ %{ip} (%{browser})
@@ -1167,7 +1252,7 @@ vi:
       not_ready: Tập tin này vẫn chưa xử lý xong. Hãy thử lại sau!
       too_many: Không thể đính kèm hơn 4 tệp
   migrations:
-    acct: Dời sang
+    acct: Chuyển sang
     cancel: Hủy chuyển hướng
     cancel_explanation: Hủy chuyển hướng sẽ kích hoạt lại tài khoản hiện tại của bạn, nhưng sẽ không chuyển được những người theo dõi ở tài khoản mới.
     cancelled_msg: Đã hủy chuyển hướng xong.
@@ -1205,6 +1290,8 @@ vi:
     copy_account_note_text: 'Tài khoản này chuyển từ %{acct}, đây là lịch sử kiểm duyệt của họ:'
   notification_mailer:
     admin:
+      report:
+        subject: "%{name} đã gửi báo cáo"
       sign_up:
         subject: "%{name} đã được đăng ký"
     digest:
@@ -1259,8 +1346,8 @@ vi:
           thousand: K
           trillion: T
   otp_authentication:
-    code_hint: Nhập mã được tạo bởi ứng dụng xác thực của bạn để xác nhận
-    description_html: Nếu kích hoạt <strong>xác thực hai bước</strong> thông qua ứng dụng, bạn sẽ đăng nhập bằng mã token được tạo bởi chính điện thoại của bạn.
+    code_hint: Nhập mã được tạo bởi ứng dụng xác minh của bạn để xác nhận
+    description_html: Nếu kích hoạt <strong>xác minh 2 bước</strong> thông qua ứng dụng, bạn sẽ đăng nhập bằng mã token được tạo bởi chính điện thoại của bạn.
     enable: Kích hoạt
     instructions_html: "<strong>Quét mã QR bằng Google Authenticator hoặc một ứng dụng TOTP tương tự trên điện thoại của bạn</strong>. Kể từ bây giờ, ứng dụng đó sẽ tạo những token để bạn đăng nhập."
     manual_instructions: 'Nếu bạn không thể quét mã QR, đây sẽ là dòng chữ gợi ý:'
@@ -1328,6 +1415,11 @@ vi:
   reports:
     errors:
       invalid_rules: không đúng với quy tắc
+  rss:
+    content_warning: 'Cảnh báo nội dung:'
+    descriptions:
+      account: Những tút công khai của @%{acct}
+      tag: 'Những tút #%{hashtag} công khai'
   scheduled_statuses:
     over_daily_limit: Bạn đã vượt qua giới hạn được lên lịch đăng tút %{limit} hôm nay
     over_total_limit: Bạn đã vượt quá giới hạn %{limit} của các tút được lên lịch
@@ -1395,7 +1487,7 @@ vi:
     relationships: Quan hệ
     statuses_cleanup: Tự động xóa tút cũ
     strikes: Lần cảnh cáo
-    two_factor_authentication: Xác thực hai bước
+    two_factor_authentication: Xác minh 2 bước
     webauthn_authentication: Khóa bảo mật
   statuses:
     attached:
@@ -1445,8 +1537,8 @@ vi:
     enabled: Tự động xóa những tút cũ
     enabled_hint: Tự động xóa các tút của bạn khi chúng tới thời điểm nhất định, trừ những trường hợp ngoại lệ bên dưới
     exceptions: Ngoại lệ
-    explanation: Tút của bạn sẽ tăng dần theo năm tháng. Bạn nên xóa những tút cũ khi chúng đã đạt tới thời điểm nhất định.
-    ignore_favs: Bỏ qua số luợt thích
+    explanation: Số lượng tút sẽ tăng dần theo năm tháng. Bạn nên xóa những tút cũ khi tới một thời điểm nhất định.
+    ignore_favs: Bỏ qua số lượt thích
     ignore_reblogs: Bỏ qua lượt đăng lại
     interaction_exceptions: Ngoại lệ dựa trên tương tác
     interaction_exceptions_explanation: Lưu ý rằng không có gì đảm bảo rằng các tút sẽ bị xóa nếu chúng tụt dưới ngưỡng mức yêu thích hoặc đăng lại, dù đã từng đạt.
@@ -1480,57 +1572,59 @@ vi:
     pinned: Tút đã ghim
     reblogged: đăng lại
     sensitive_content: NSFW
+  strikes:
+    errors:
+      too_late: Đã quá trễ để kháng cáo
   tags:
     does_not_match_previous_name: không khớp với tên trước
   terms:
     body_html: |
       <h2>Chính sách bảo mật</h2>
-      <h3 id="collect">Chúng tôi thu thập những thông tin gì?</h3>
-
-      <ul>
-      <li><em>Thông tin tài khoản cơ bản</em>: Nếu bạn đăng ký trên máy chủ này, bạn phải cung cấp tên người dùng, địa chỉ email và mật khẩu. Bạn cũng có thể tùy chọn bổ sung tên hiển thị, tiểu sử, ảnh đại diện, ảnh bìa. Tên người dùng, tên hiển thị, tiểu sử, ảnh hồ sơ và ảnh bìa luôn được hiển thị công khai.</li>
-      <li><em>Tút, lượt theo dõi và nội dung công khai khác</em>: Danh sách những người bạn theo dõi được liệt kê công khai, cũng tương tự như danh sách những người theo dõi bạn. Khi bạn đăng tút, ngày giờ và ứng dụng sử dụng được lưu trữ. Tút có thể chứa tệp đính kèm hình ảnh và video. Tút công khai và tút mở sẽ hiển thị công khai. Khi bạn đăng một tút trên trang hồ sơ của bạn, đó là nội dung công khai. Tút của bạn sẽ gửi đến những người theo dõi của bạn, đồng nghĩa với việc sẽ có các bản sao được lưu trữ ở máy chủ của họ. Khi bạn xóa bài viết, bản sao từ những người theo dõi của bạn cũng bị xóa theo. Hành động chia sẻ hoặc thích một tút luôn luôn là công khai.</li>
-      <li><em>Tin nhắn và tút dành cho người theo dõi</em>: Toàn bộ tút được lưu trữ và xử lý trên máy chủ. Các tút dành cho người theo dõi được gửi đến những người theo dõi và những người được gắn thẻ trong tút. Còn các tin nhắn chỉ được gửi đến cho người nhận. Điều đó có nghĩa là chúng được gửi đến các máy chủ khác nhau và có các bản sao được lưu trữ ở đó. Chúng tôi đề nghị chỉ cho những người được ủy quyền truy cập vào đó, nhưng không phải máy chủ nào cũng làm như vậy. Do đó, điều quan trọng là phải xem xét kỹ máy chủ của người theo dõi của bạn. Bạn có thể thiết lập tự mình phê duyệt và từ chối người theo dõi mới trong cài đặt. <em>Xin lưu ý rằng quản trị viên máy chủ của bạn và bất kỳ máy chủ của người nhận nào cũng có thể xem các tin nhắn</em>. Người nhận tin nhắn có thể chụp màn hình, sao chép hoặc chia sẻ lại chúng. <em>Không nên chia sẻ bất kỳ thông tin rủi ro nào trên Mastodon.</em></li>
-      <li> <em>Địa chỉ IP và siêu dữ liệu khác</em>: Khi bạn đăng nhập, chúng tôi ghi nhớ địa chỉ IP đăng nhập cũng như tên trình duyệt của bạn. Tất cả các phiên đăng nhập sẽ để bạn xem xét và hủy bỏ trong phần cài đặt. Địa chỉ IP sử dụng được lưu trữ tối đa 12 tháng. Chúng tôi cũng có thể giữ lại nhật ký máy chủ bao gồm địa chỉ IP của những lượt đăng ký tài khoản trên máy chủ của chúng tôi. </li>
-      </ul><hr class="spacer" />
-      <h3 id="use"> Chúng tôi sử dụng thông tin của bạn để làm gì? </h3>
-      <p> Bất kỳ thông tin nào chúng tôi thu thập từ bạn là: </p>
-      <ul>
-      <li>Để cung cấp các chức năng cốt lõi của Mastodon. Sau khi đăng nhập, bạn mới có thể tương tác với nội dung của người khác và đăng nội dung của riêng bạn. Ví dụ: bạn có thể theo dõi người khác để xem các tút của họ trong bảng tin của bạn.</li>
-      <li>Để hỗ trợ kiểm duyệt. Ví dụ so sánh địa chỉ IP của bạn với các địa chỉ đã biết khác để xác định hacker hoặc spammer.</li>
-      <li>Địa chỉ email bạn cung cấp chỉ được sử dụng để gửi các thông báo quan trọng, trả lời các câu hỏi cũng như yêu cầu khác từ chính bạn.</li>
-      </ul>
-      <hr class="spacer" />
-      <h3 id="protect">Chúng tôi bảo vệ thông tin của bạn như thế nào? </h3>
-      <p>Chúng tôi thực hiện nhiều biện pháp để duy trì sự an toàn khi bạn nhập, gửi hoặc truy cập thông tin cá nhân của bạn. Một vài trong số đó như là kiểm soát phiên đăng nhập của bạn, lưu lượng giữa các ứng dụng và API, bảo mật bằng SSL và băm nhỏ mật khẩu nhờ thuật toán một chiều mạnh mẽ. Bạn có thể kích hoạt xác thực hai yếu tố để tiếp tục truy cập an toàn vào tài khoản của mình.</p>
-      <hr class="spacer" />
-      <h3 id="data-retention">Chúng tôi lưu trữ dữ liệu như thế nào?</h3>
-      <p>Chúng tôi tiến hành:</p>
-      <ul>
-      <li>Giữ lại nhật ký máy chủ chứa địa chỉ IP của tất cả các yêu cầu đến máy chủ này, cho đến khi các nhật ký đó bị xóa đi trong vòng 90 ngày.</li>
-      <li>Giữ lại các địa chỉ IP được liên kết với người dùng đã đăng ký trong vòng 12 tháng.</li>
-      </ul>
-      <p>Bạn có thể tải xuống một bản sao lưu trữ nội dung của bạn, bao gồm các tút, tập tin đính kèm, ảnh đại diện và ảnh bìa.</p>
-      <p> Bạn có thể xóa tài khoản của mình bất cứ lúc nào.</p>
-      <hr class="spacer"/>
-      <h3 id="cookies">Chúng tôi có sử dụng cookie không?</h3>
-      <p>Có. Cookie là các tệp nhỏ mà một trang web hoặc nhà cung cấp dịch vụ internet chuyển vào ổ cứng máy tính của bạn thông qua trình duyệt Web (nếu bạn cho phép). Những cookie này cho phép trang web nhận ra trình duyệt của bạn và nếu bạn có tài khoản đã đăng ký, nó sẽ liên kết với tài khoản đã đăng ký của bạn.</p>
-      <p> Chúng tôi sử dụng cookie để hiểu và lưu các tùy chọn của bạn cho các lần truy cập trong tiếp theo.</p>
-      <hr class="spacer" />
-      <h3 id="disclose">Chúng tôi có tiết lộ bất cứ thông tin nào ra ngoài không?</h3>
-      <p>Chúng tôi không bán, trao đổi hoặc chuyển nhượng thông tin nhận dạng cá nhân của bạn cho bên thứ ba. Trừ khi bên thứ ba đó đang hỗ trợ chúng tôi điều hành Mastodon, tiến hành kinh doanh hoặc phục vụ bạn, miễn là các bên đó đồng ý giữ bí mật thông tin này. Chúng tôi cũng có thể tiết lộ thông tin của bạn nếu việc công bố là để tuân thủ luật pháp, thực thi quy tắc máy chủ của chúng tôi hoặc bảo vệ quyền, tài sản hợp pháp hoặc sự an toàn của chúng tôi hoặc bất kỳ ai.</p>
-      <p>Nội dung công khai của bạn có thể được tải xuống bởi các máy chủ khác trong mạng liên hợp. Các tút công khai hay dành cho người theo dõi được gửi đến các máy chủ nơi người theo dõi của bạn là thành viên và tin nhắn được gửi đến máy chủ của người nhận, cho đến khi những người theo dõi hoặc người nhận đó chuyển sang một máy chủ khác.</p>
-      <p>Nếu bạn cho phép một ứng dụng sử dụng tài khoản của mình, tùy thuộc vào phạm vi quyền bạn phê duyệt, ứng dụng có thể truy cập thông tin trang hồ sơ, danh sách người theo dõi, danh sách của bạn, tất cả tút và lượt thích của bạn. Các ứng dụng không bao giờ có thể truy cập địa chỉ e-mail hoặc mật khẩu của bạn.</p>
-      <hr class="spacer" />
-      <h3 id="children">Cấm trẻ em sử dụng</h3>
-      <p>Nếu máy chủ này ở EU hoặc EEA: Trang web của chúng tôi, các sản phẩm và dịch vụ đều dành cho những người trên 16 tuổi. Nếu bạn dưới 16 tuổi, xét theo GDPR (<a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">Quy định bảo vệ dữ liệu chung</a>) thì không được sử dụng trang web này. </p>
-      <p>Nếu máy chủ này ở Hoa Kỳ: Trang web của chúng tôi, các sản phẩm và dịch vụ đều dành cho những người trên 13 tuổi. Nếu bạn dưới 13 tuổi, xét theo COPPA (<a href="https://en.wikipedia.org/wiki/Children%27s_Online_Privacy_Protection_Act">Đạo luật bảo vệ quyền riêng tư trực tuyến của trẻ em</a>) thì không được sử dụng trang web này.</p>
-      <p>Quy định pháp luật có thể khác biệt nếu máy chủ này ở khu vực địa lý khác.</p>
-      <hr class="spacer" />
-      <h3 id="changes">Cập nhật thay đổi</h3>
-      <p>Nếu có thay đổi chính sách bảo mật, chúng tôi sẽ đăng những thay đổi đó ở mục này.</p>
-      <p>Tài liệu này phát hành dưới hình thức CC-BY-SA và được cập nhật lần cuối vào ngày 7 tháng 3 năm 2018.</p>
-      <p>Chỉnh sửa và hoàn thiện từ <a href="https://github.com/discourse/discourse">Discourse</a>.</p>
+            <h3 id="collect">Chúng tôi thu thập những thông tin gì?</h3>
+            <ul>
+            <li><em>Thông tin tài khoản cơ bản</em>: Nếu bạn đăng ký trên máy chủ này, bạn phải cung cấp tên người dùng, địa chỉ email và mật khẩu. Bạn cũng có thể tùy chọn bổ sung tên hiển thị, tiểu sử, ảnh đại diện, ảnh bìa. Tên người dùng, tên hiển thị, tiểu sử, ảnh hồ sơ và ảnh bìa luôn được hiển thị công khai.</li>
+            <li><em>Tút, lượt theo dõi và nội dung công khai khác</em>: Danh sách những người bạn theo dõi được liệt kê công khai, cũng tương tự như danh sách những người theo dõi bạn. Khi bạn đăng tút, ngày giờ và ứng dụng sử dụng được lưu trữ. Tút có thể chứa tệp đính kèm hình ảnh và video. Tút công khai và tút mở sẽ hiển thị công khai. Khi bạn đăng một tút trên trang hồ sơ của bạn, đó là nội dung công khai. Tút của bạn sẽ gửi đến những người theo dõi của bạn, đồng nghĩa với việc sẽ có các bản sao được lưu trữ ở máy chủ của họ. Khi bạn xóa bài viết, bản sao từ những người theo dõi của bạn cũng bị xóa theo. Hành động chia sẻ hoặc thích một tút luôn luôn là công khai.</li>
+            <li><em>Tin nhắn và tút dành cho người theo dõi</em>: Toàn bộ tút được lưu trữ và xử lý trên máy chủ. Các tút dành cho người theo dõi được gửi đến những người theo dõi và những người được gắn thẻ trong tút. Còn các tin nhắn chỉ được gửi đến cho người nhận. Điều đó có nghĩa là chúng được gửi đến các máy chủ khác nhau và có các bản sao được lưu trữ ở đó. Chúng tôi đề nghị chỉ cho những người được ủy quyền truy cập vào đó, nhưng không phải máy chủ nào cũng làm như vậy. Do đó, điều quan trọng là phải xem xét kỹ máy chủ của người theo dõi của bạn. Bạn có thể thiết lập tự mình phê duyệt và từ chối người theo dõi mới trong cài đặt. <em>Xin lưu ý rằng quản trị viên máy chủ của bạn và bất kỳ máy chủ của người nhận nào cũng có thể xem các tin nhắn</em>. Người nhận tin nhắn có thể chụp màn hình, sao chép hoặc chia sẻ lại chúng. <em>Không nên chia sẻ bất kỳ thông tin rủi ro nào trên Mastodon.</em></li>
+            <li> <em>Địa chỉ IP và siêu dữ liệu khác</em>: Khi bạn đăng nhập, chúng tôi ghi nhớ địa chỉ IP đăng nhập cũng như tên trình duyệt của bạn. Tất cả các phiên đăng nhập sẽ để bạn xem xét và hủy bỏ trong phần cài đặt. Địa chỉ IP sử dụng được lưu trữ tối đa 12 tháng. Chúng tôi cũng có thể giữ lại nhật ký máy chủ bao gồm địa chỉ IP của những lượt đăng ký tài khoản trên máy chủ của chúng tôi. </li>
+            </ul><hr class="spacer" />
+            <h3 id="use"> Chúng tôi sử dụng thông tin của bạn để làm gì? </h3>
+            <p> Bất kỳ thông tin nào chúng tôi thu thập từ bạn là: </p>
+            <ul>
+            <li>Để cung cấp các chức năng cốt lõi của Mastodon. Sau khi đăng nhập, bạn mới có thể tương tác với nội dung của người khác và đăng nội dung của riêng bạn. Ví dụ: bạn có thể theo dõi người khác để xem các tút của họ trong bảng tin của bạn.</li>
+            <li>Để hỗ trợ kiểm duyệt. Ví dụ so sánh địa chỉ IP của bạn với các địa chỉ đã biết khác để xác định hacker hoặc spammer.</li>
+            <li>Địa chỉ email bạn cung cấp chỉ được sử dụng để gửi các thông báo quan trọng, trả lời các câu hỏi cũng như yêu cầu khác từ chính bạn.</li>
+            </ul>
+            <hr class="spacer" />
+            <h3 id="protect">Chúng tôi bảo vệ thông tin của bạn như thế nào? </h3>
+            <p>Chúng tôi thực hiện nhiều biện pháp để duy trì sự an toàn khi bạn nhập, gửi hoặc truy cập thông tin cá nhân của bạn. Một vài trong số đó như là kiểm soát phiên đăng nhập của bạn, lưu lượng giữa các ứng dụng và API, bảo mật bằng SSL và băm nhỏ mật khẩu nhờ thuật toán một chiều mạnh mẽ. Bạn có thể kích hoạt xác thực hai yếu tố để tiếp tục truy cập an toàn vào tài khoản của mình.</p>
+            <hr class="spacer" />
+            <h3 id="data-retention">Chúng tôi lưu trữ dữ liệu như thế nào?</h3>
+            <p>Chúng tôi tiến hành:</p>
+            <ul>
+            <li>Giữ lại nhật ký máy chủ chứa địa chỉ IP của tất cả các yêu cầu đến máy chủ này, cho đến khi các nhật ký đó bị xóa đi trong vòng 90 ngày.</li>
+            <li>Giữ lại các địa chỉ IP được liên kết với người dùng đã đăng ký trong vòng 12 tháng.</li>
+            </ul>
+            <p>Bạn có thể tải xuống một bản sao lưu trữ nội dung của bạn, bao gồm các tút, tập tin đính kèm, ảnh đại diện và ảnh bìa.</p>
+            <p> Bạn có thể xóa tài khoản của mình bất cứ lúc nào.</p>
+            <hr class="spacer"/>
+            <h3 id="cookies">Chúng tôi có sử dụng cookie không?</h3>
+            <p>Có. Cookie là các tệp nhỏ mà một trang web hoặc nhà cung cấp dịch vụ internet chuyển vào ổ cứng máy tính của bạn thông qua trình duyệt Web (nếu bạn cho phép). Những cookie này cho phép trang web nhận ra trình duyệt của bạn và nếu bạn có tài khoản đã đăng ký, nó sẽ liên kết với tài khoản đã đăng ký của bạn.</p>
+            <p> Chúng tôi sử dụng cookie để hiểu và lưu các tùy chọn của bạn cho các lần truy cập trong tiếp theo.</p>
+            <hr class="spacer" />
+            <h3 id="disclose">Chúng tôi có tiết lộ bất cứ thông tin nào ra ngoài không?</h3>
+            <p>Chúng tôi không bán, trao đổi hoặc chuyển nhượng thông tin nhận dạng cá nhân của bạn cho bên thứ ba. Trừ khi bên thứ ba đó đang hỗ trợ chúng tôi điều hành Mastodon, tiến hành kinh doanh hoặc phục vụ bạn, miễn là các bên đó đồng ý giữ bí mật thông tin này. Chúng tôi cũng có thể tiết lộ thông tin của bạn nếu việc công bố là để tuân thủ luật pháp, thực thi quy tắc máy chủ của chúng tôi hoặc bảo vệ quyền, tài sản hợp pháp hoặc sự an toàn của chúng tôi hoặc bất kỳ ai.</p>
+            <p>Nội dung công khai của bạn có thể được tải xuống bởi các máy chủ khác trong mạng liên hợp. Các tút công khai hay dành cho người theo dõi được gửi đến các máy chủ nơi người theo dõi của bạn là thành viên và tin nhắn được gửi đến máy chủ của người nhận, cho đến khi những người theo dõi hoặc người nhận đó chuyển sang một máy chủ khác.</p>
+            <p>Nếu bạn cho phép một ứng dụng sử dụng tài khoản của mình, tùy thuộc vào phạm vi quyền bạn phê duyệt, ứng dụng có thể truy cập thông tin trang hồ sơ, danh sách người theo dõi, danh sách của bạn, tất cả tút và lượt thích của bạn. Các ứng dụng không bao giờ có thể truy cập địa chỉ e-mail hoặc mật khẩu của bạn.</p>
+            <hr class="spacer" />
+            <h3 id="children">Cấm trẻ em sử dụng</h3>
+            <p>Nếu máy chủ này ở EU hoặc EEA: Trang web của chúng tôi, các sản phẩm và dịch vụ đều dành cho những người trên 16 tuổi. Nếu bạn dưới 16 tuổi, xét theo Quy định bảo vệ dữ liệu chung (<a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a>) thì không được sử dụng trang web này. </p>
+            <p>Nếu máy chủ này ở Hoa Kỳ: Trang web của chúng tôi, các sản phẩm và dịch vụ đều dành cho những người trên 13 tuổi. Nếu bạn dưới 13 tuổi, xét theo Đạo luật bảo vệ quyền riêng tư trực tuyến của trẻ em (<a href="https://en.wikipedia.org/wiki/Children%27s_Online_Privacy_Protection_Act">COPPA</a>) thì không được sử dụng trang web này.</p>
+            <p>Quy định pháp luật có thể khác nếu máy chủ này ở khu vực địa lý khác.</p>
+            <hr class="spacer" />
+            <h3 id="changes">Cập nhật thay đổi</h3>
+            <p>Nếu có thay đổi chính sách bảo mật, chúng tôi sẽ đăng những thay đổi đó ở mục này.</p>
+            <p>Tài liệu này phát hành dưới giấy phép CC-BY-SA và được cập nhật lần cuối vào ngày 26 tháng 5 năm 2022.</p>
+            <p>Chỉnh sửa và hoàn thiện từ <a href="https://github.com/discourse/discourse">Discourse</a>.</p>
     title: Quy tắc của %{instance}
   themes:
     contrast: Mastodon (Độ tương phản cao)
@@ -1538,21 +1632,21 @@ vi:
     mastodon-light: Mastodon (Sáng)
   time:
     formats:
-      default: "%d.%m.%Y %H:%M"
+      default: "%-d.%m.%Y %H:%M"
       month: "%B %Y"
       time: "%H:%M"
   two_factor_authentication:
     add: Thêm
     disable: Vô hiệu hóa
-    disabled_success: Đã vô hiệu hóa xác thực hai bước
+    disabled_success: Đã vô hiệu hóa xác minh 2 bước
     edit: Sửa
-    enabled: Đã kích hoạt xác thực hai bước
-    enabled_success: Xác thực hai bước được kích hoạt thành công
+    enabled: Đã kích hoạt xác minh 2 bước
+    enabled_success: Xác minh 2 bước được kích hoạt thành công
     generate_recovery_codes: Tạo mã khôi phục
     lost_recovery_codes: Mã khôi phục cho phép bạn lấy lại quyền truy cập vào tài khoản của mình nếu bạn mất điện thoại. Nếu bạn bị mất mã khôi phục, bạn có thể tạo lại chúng ở đây. Mã khôi phục cũ của bạn sẽ bị vô hiệu.
-    methods: Phương pháp xác thực
-    otp: Ứng dụng xác thực
-    recovery_codes: Mã phục hồi dự phòng
+    methods: Phương pháp xác minh
+    otp: Ứng dụng xác minh
+    recovery_codes: Mã khôi phục dự phòng
     recovery_codes_regenerated: Mã khôi phục được phục hồi thành công
     recovery_instructions_html: Nếu bạn bị mất điện thoại, hãy dùng một trong các mã khôi phục bên dưới để lấy lại quyền truy cập vào tài khoản của mình. <strong>Giữ mã khôi phục an toàn</strong>. Ví dụ, bạn có thể in chúng ra giấy.
     webauthn: Khóa bảo mật
@@ -1574,7 +1668,7 @@ vi:
       change_password: đổi mật khẩu của bạn
       details: 'Chi tiết thông tin đăng nhập:'
       explanation: Chúng tôi phát hiện lần đăng nhập bất thường tài khoản của bạn từ một địa chỉ IP mới.
-      further_actions_html: Nếu đó không phải là bạn, chúng tôi khuyến nghị %{action} lập tức và bật xác thực hai bước để giữ tài khoản được an toàn.
+      further_actions_html: Nếu đó không phải là bạn, chúng tôi khuyến nghị %{action} lập tức và bật xác minh hai bước để giữ tài khoản được an toàn.
       subject: Đăng nhập tài khoản từ địa chỉ IP mới
       title: Lần đăng nhập mới
     warning:
@@ -1589,14 +1683,14 @@ vi:
         mark_statuses_as_sensitive: Vài tút của bạn đã bị kiểm duyệt viên %{instance} đánh dấu nhạy cảm. Mọi người cần nhấn vào media để xem nó. Bạn có thể tự đánh dấu tài khoản của bạn là nhạy cảm.
         sensitive: Từ giờ trở đi, tất cả các media của bạn bạn tải lên sẽ được đánh dấu là nhạy cảm và ẩn đằng sau cảnh báo nhấp chuột.
         silence: Bạn vẫn có thể sử dụng tài khoản của mình, nhưng chỉ những người đang theo dõi bạn mới thấy bài đăng của bạn. Bạn cũng bị loại khỏi các tính năng khám phá khác. Tuy nhiên, những người khác vẫn có thể theo dõi bạn.
-        suspend: Bạn không còn có thể sử dụng tài khoản của bạn, hồ sơ và các dữ liệu khác không còn có thể truy cập được. Bạn vẫn có thể đăng nhập để yêu cầu sao lưu dữ liệu của mình cho đến khi dữ liệu bị xóa hoàn toàn trong khoảng 30 ngày, nhưng chúng tôi sẽ giữ lại một số dữ liệu cơ bản để ngăn bạn tránh bị đình chỉ.
+        suspend: Bạn không còn có thể sử dụng tài khoản của bạn, hồ sơ và các dữ liệu khác không còn có thể truy cập được. Trong vòng 30 ngày, bạn vẫn có thể đăng nhập để yêu cầu bản sao dữ liệu của mình cho đến khi dữ liệu bị xóa hoàn toàn, nhưng chúng tôi sẽ giữ lại một số dữ liệu cơ bản để ngăn bạn thoát khỏi việc vô hiệu hóa.
       reason: 'Lý do:'
       statuses: 'Tút lưu ý:'
       subject:
         delete_statuses: Những tút %{acct} của bạn đã bị xóa bỏ
         disable: Tài khoản %{acct} của bạn đã bị vô hiệu hóa
         mark_statuses_as_sensitive: Tút của bạn trên %{acct} bị đánh dấu nhạy cảm
-        none: Cảnh báo cho %{acct}
+        none: Nhắc nhở tới %{acct}
         sensitive: Tút của bạn trên %{acct} sẽ bị đánh dấu nhạy cảm kể từ bây giờ
         silence: Tài khoản %{acct} của bạn đã bị hạn chế
         suspend: Tài khoản %{acct} của bạn đã bị vô hiệu hóa
@@ -1604,7 +1698,7 @@ vi:
         delete_statuses: Xóa tút
         disable: Tài khoản bị đóng băng
         mark_statuses_as_sensitive: Tút đã bị đánh dấu nhạy cảm
-        none: Cảnh báo
+        none: Nhắc nhở
         sensitive: Tài khoản đã bị đánh dấu nhạy cảm
         silence: Tài khoản bị hạn chế
         suspend: Tài khoản bị vô hiệu hóa
@@ -1627,7 +1721,7 @@ vi:
       title: Xin chào %{name}!
   users:
     follow_limit_reached: Bạn chỉ có thể theo dõi tối đa %{limit} người
-    invalid_otp_token: Mã xác thực hai bước không hợp lệ
+    invalid_otp_token: Mã xác minh 2 bước không hợp lệ
     otp_lost_help_html: Nếu bạn mất quyền truy cập vào cả hai, bạn có thể đăng nhập bằng %{email}
     seamless_external_login: Bạn đã đăng nhập thông qua một dịch vụ bên ngoài, vì vậy mật khẩu và email không khả dụng.
     signed_in_as: 'Đăng nhập với tư cách là:'
@@ -1649,5 +1743,5 @@ vi:
     nickname_hint: Nhập tên mới cho khóa bảo mật của bạn
     not_enabled: Bạn chưa kích hoạt WebAuthn
     not_supported: Trình duyệt của bạn không hỗ trợ khóa bảo mật
-    otp_required: Để dùng khóa bảo mật, trước tiên hãy kích hoạt xác thực hai bước.
+    otp_required: Để dùng khóa bảo mật, trước tiên hãy kích hoạt xác minh 2 bước.
     registered_on: Đăng ký vào %{date}

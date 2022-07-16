@@ -5,14 +5,14 @@ vi:
       account_alias:
         acct: Nhập tên_người_dùng@máy chủ của tài khoản cũ
       account_migration:
-        acct: Nhập tên_người_dùng@máy chủ của tài khoản bạn muốn dời sang
+        acct: tên_người_dùng@máy chủ của tài khoản bạn muốn chuyển sang
       account_warning_preset:
         text: Bạn có thể dùng URL, hashtag và nhắc đến
         title: Tùy chọn. Không cho người nhận xem
       admin_account_action:
         include_statuses: Người dùng sẽ thấy các tút nào của họ bị kiểm duyệt
         send_email_notification: Người dùng sẽ nhận được lời giải thích về những gì xảy ra với tài khoản của họ
-        text_html: Tùy chọn. Bạn nên dùng <a href="%{path}">cảnh cáo cài sẵn</a> để tiết kiệm thời gian
+        text_html: Tùy chọn. Bạn nên dùng <a href="%{path}">mẫu có sẵn</a> để tiết kiệm thời gian
         type_html: Chọn làm gì với <strong>%{acct}</strong>
         types:
           disable: Tạm khóa đăng nhập tài khoản, nhưng không xóa hoặc ẩn tút.
@@ -68,6 +68,11 @@ vi:
         with_dns_records: Nếu DNS có vấn đề, nó sẽ bị đưa vào danh sách cấm
       featured_tag:
         name: 'Những hashtag gợi ý cho bạn:'
+      filters:
+        action: Chọn hành động sẽ thực hiện khi một tút khớp với bộ lọc
+        actions:
+          hide: Ẩn hoàn toàn nội dung đã lọc, hoạt động như thể nó không tồn tại
+          warn: Ẩn nội dung đã lọc đằng sau một cảnh báo đề cập đến tiêu đề của bộ lọc
       form_challenge:
         current_password: Biểu mẫu này an toàn
       imports:
@@ -85,12 +90,22 @@ vi:
       rule:
         text: Mô tả một quy tắc bắt buộc trên máy chủ này. Nên để ngắn và đơn giản.
       sessions:
-        otp: 'Nhập mã xác thực hai bước được tạo bởi ứng dụng điện thoại của bạn hoặc dùng một trong các mã khôi phục của bạn:'
+        otp: 'Nhập mã xác minh 2 bước được tạo bởi ứng dụng điện thoại của bạn hoặc dùng một trong các mã khôi phục của bạn:'
         webauthn: Nếu đây là USB key, hãy cắm vào và thử xoay chiều.
       tag:
         name: Bạn có thể thay đổi cách viết hoa các chữ cái để giúp nó dễ đọc hơn
       user:
         chosen_languages: Chỉ hiển thị những tút viết bằng các ngôn ngữ được chọn sau
+        role: Vai trò kiểm soát những quyền mà người dùng có
+      user_role:
+        color: Màu được sử dụng cho vai trò trong toàn bộ giao diện người dùng, dưới dạng RGB ở định dạng hex
+        highlighted: Vai trò sẽ hiển thị công khai
+        name: Tên công khai của vai trò, nếu vai trò được đặt để hiển thị dưới dạng huy hiệu
+        permissions_as_keys: Người dùng có vai trò này sẽ có quyền truy cập vào...
+        position: Vai trò cao hơn sẽ có quyền quyết định xung đột trong các tình huống. Các vai trò có mức độ ưu tiên thấp hơn chỉ có thể thực hiện một số hành động nhất định
+      webhook:
+        events: Chọn sự kiện để gửi
+        url: Nơi những sự kiện được gửi đến
     labels:
       account:
         fields:
@@ -110,7 +125,7 @@ vi:
         type: Hành động
         types:
           disable: Khóa
-          none: Cảnh cáo
+          none: Nhắc nhở
           sensitive: Nhạy cảm
           silence: Hạn chế
           suspend: Vô hiệu hóa
@@ -147,7 +162,7 @@ vi:
         max_uses: Số lần dùng tối đa
         new_password: Mật khẩu mới
         note: Tiểu sử
-        otp_attempt: Xác thực hai bước
+        otp_attempt: Mã xác minh 2 bước
         password: Mật khẩu
         phrase: Từ khóa hoặc cụm từ
         setting_advanced_layout: Bật bố cục nhiều cột
@@ -178,6 +193,7 @@ vi:
         setting_use_pending_items: Không tự động cập nhật bảng tin
         severity: Mức độ nghiêm trọng
         sign_in_token_attempt: Mã an toàn
+        title: Tựa đề
         type: Kiểu nhập
         username: Tên người dùng
         username_or_email: Tên người dùng hoặc email
@@ -186,6 +202,10 @@ vi:
         with_dns_records: Bao gồm bản ghi MX và địa chỉ IP của máy chủ
       featured_tag:
         name: Hashtag
+      filters:
+        actions:
+          hide: Ẩn toàn bộ
+          warn: Ẩn kèm theo cảnh báo
       interactions:
         must_be_follower: Chặn thông báo từ những người không theo dõi bạn
         must_be_following: Chặn thông báo từ những người bạn không theo dõi
@@ -219,6 +239,17 @@ vi:
         name: Hashtag
         trendable: Cho phép xuất hiện trong xu hướng
         usable: Cho phép dùng trong tút
+      user:
+        role: Vai trò
+      user_role:
+        color: Màu huy hiệu
+        highlighted: Hiển thị huy hiệu vai trò trên hồ sơ người dùng
+        name: Tên
+        permissions_as_keys: Quyền
+        position: Mức độ ưu tiên
+      webhook:
+        events: Những sự kiện đã bật
+        url: URL endpoint
     'no': Tắt
     recommended: Đề xuất
     required:

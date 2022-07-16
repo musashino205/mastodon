@@ -60,6 +60,7 @@ ar:
       error:
         title: حدث هناك خطأ
       new:
+        prompt_html: يريد %{client_name} الإذن للوصول إلى حسابك. إنه تطبيق طرف ثالث. <strong>إذا كنت لا تثق فيه، فلا ينبغي أن تأذن له بذلك.</strong>
         review_permissions: مراجعة الصلاحيات
         title: إذن بالتصريح
       show:
@@ -71,6 +72,7 @@ ar:
         revoke: متأكد ؟
       index:
         authorized_at: تاريخ التخويل %{date}
+        description_html: يمكن لهذه التطبيقات الوصول إلى حسابك من باستخدام الـ API. إذا وجدت تطبيقات لا تتعرف عليها أو لا تعمل بشكل طبيعي ، فيمكنك إبطال وصولها لحسابك.
         last_used_at: آخر استخدام في %{date}
         never_used: لم يُستخدَم قط
         scopes: الصلاحيات
