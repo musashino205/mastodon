@@ -73,6 +73,10 @@ io:
         actions:
           hide: Komplete celez filtrita kontenajo quale ol ne existas
           warn: Celez filtrita kontenajo dop avert quo montras titulo di filtrilo
+      form_admin_settings:
+        backups_retention_period: Retenez igita uzantoarkivi por la diiquanto.
+        content_cache_retention_period: Posti de altra servili efacesos pos la diiquanto kande fixesas a positiva nombro. Co darfas desagesar.
+        media_cache_retention_period: Deschargita mediifaili efacesos pos la diiquanto kande fixesas a positiva nombro, e rideschargesas irgatempe.
       form_challenge:
         current_password: Vu eniras sekura areo
       imports:
@@ -85,6 +89,7 @@ io:
         ip: Tipez adreso di IPv4 o IPv6. Vu povas restrikar tota porteo per sintaxo CIDR. Sorgemez por ke vu ne klefklozas su!
         severities:
           no_access: Restriktez aceso a omna moyeni
+          sign_up_block: Nova registrago ne esos posibla
           sign_up_requires_approval: Nova registro bezonos vua aprobo
         severity: Selektez quo eventos kun demandi de ca IP
       rule:
@@ -206,6 +211,10 @@ io:
         actions:
           hide: Tote celez
           warn: Celez kun averto
+      form_admin_settings:
+        backups_retention_period: Uzantoarkivretendurtempo
+        content_cache_retention_period: Kontenajmemorajretendurtempo
+        media_cache_retention_period: Mediimemorajretendurtempo
       interactions:
         must_be_follower: Celar la savigi da homi, qui ne sequas tu
         must_be_following: Celar la savigi da homi, quin tu ne sequas
@@ -219,6 +228,7 @@ io:
         ip: IP
         severities:
           no_access: Depermisez aceso
+          sign_up_block: Obstruktez registragi
           sign_up_requires_approval: Limitigez registri
         severity: Regulo
       notification_emails:
@@ -251,6 +261,7 @@ io:
         events: Aktivigita eventi
         url: URL di finpunto
     'no': Ne
+    not_recommended: Ne rekomendesas
     recommended: Rekomendito
     required:
       mark: "*"
