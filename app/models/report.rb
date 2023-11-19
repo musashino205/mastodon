@@ -48,7 +48,10 @@ class Report < ApplicationRecord
 
   validate :validate_rule_ids
 
-  # entries here needs to be kept in sync with app/javascript/mastodon/features/notifications/components/report.jsx
+  # entries here need to be kept in sync with the front-end:
+  # - app/javascript/mastodon/features/notifications/components/report.jsx
+  # - app/javascript/mastodon/features/report/category.jsx
+  # - app/javascript/mastodon/components/admin/ReportReasonSelector.jsx
   enum category: {
     other: 0,
     spam: 1_000,
@@ -58,7 +61,8 @@ class Report < ApplicationRecord
 
   before_validation :set_uri, only: :create
 
-  after_create_commit :trigger_webhooks
+  after_create_commit :trigger_create_webhooks
+  after_update_commit :trigger_update_webhooks
 
   def object_type
     :flag
@@ -138,6 +142,11 @@ class Report < ApplicationRecord
         target_type: 'Status',
         target_id: status_ids
       ).unscope(:order).arel,
+
+      Admin::ActionLog.where(
+        target_type: 'AccountWarning',
+        target_id: AccountWarning.where(report_id: id).select(:id)
+      ).unscope(:order).arel,
     ].reduce { |union, query| Arel::Nodes::UnionAll.new(union, query) }
 
     Admin::ActionLog.from(Arel::Nodes::As.new(subquery, Admin::ActionLog.arel_table))
@@ -155,7 +164,11 @@ class Report < ApplicationRecord
     errors.add(:rule_ids, I18n.t('reports.errors.invalid_rules')) unless rules.size == rule_ids&.size
   end
 
-  def trigger_webhooks
+  def trigger_create_webhooks
     TriggerWebhookWorker.perform_async('report.created', 'Report', id)
+  end
+
+  def trigger_update_webhooks
+    TriggerWebhookWorker.perform_async('report.updated', 'Report', id)
   end
 end

@@ -61,6 +61,7 @@ describe Settings::TwoFactorAuthentication::ConfirmationsController do
           it 'renders page with success' do
             prepare_user_otp_generation
             prepare_user_otp_consumption
+            allow(controller).to receive(:current_user).and_return(user)
 
             expect do
               post :create,
@@ -75,36 +76,34 @@ describe Settings::TwoFactorAuthentication::ConfirmationsController do
           end
 
           def prepare_user_otp_generation
-            expect_any_instance_of(User).to receive(:generate_otp_backup_codes!) do |value|
-              expect(value).to eq user
-              otp_backup_codes
-            end
+            allow(user)
+              .to receive(:generate_otp_backup_codes!)
+              .and_return(otp_backup_codes)
           end
 
           def prepare_user_otp_consumption
-            expect_any_instance_of(User).to receive(:validate_and_consume_otp!) do |value, code, options|
-              expect(value).to eq user
-              expect(code).to eq '123456'
-              expect(options).to eq({ otp_secret: 'thisisasecretforthespecofnewview' })
-              true
-            end
+            options = { otp_secret: 'thisisasecretforthespecofnewview' }
+            allow(user)
+              .to receive(:validate_and_consume_otp!)
+              .with('123456', options)
+              .and_return(true)
           end
         end
 
         describe 'when creation fails' do
           subject do
-            expect_any_instance_of(User).to receive(:validate_and_consume_otp!) do |value, code, options|
-              expect(value).to eq user
-              expect(code).to eq '123456'
-              expect(options).to eq({ otp_secret: 'thisisasecretforthespecofnewview' })
-              false
-            end
+            options = { otp_secret: 'thisisasecretforthespecofnewview' }
+            allow(user)
+              .to receive(:validate_and_consume_otp!)
+              .with('123456', options)
+              .and_return(false)
+            allow(controller).to receive(:current_user).and_return(user)
 
             expect do
               post :create,
                    params: { form_two_factor_confirmation: { otp_attempt: '123456' } },
                    session: { challenge_passed_at: Time.now.utc, new_otp_secret: 'thisisasecretforthespecofnewview' }
-            end.to not_change { user.reload.otp_secret }
+            end.to(not_change { user.reload.otp_secret })
           end
 
           it 'renders the new view' do
