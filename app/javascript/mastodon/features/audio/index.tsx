@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useState, useId } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
 
@@ -19,12 +19,10 @@ import { SpoilerButton } from 'mastodon/components/spoiler_button';
 import { formatTime, getPointerPosition } from 'mastodon/features/video';
 import { useAudioContext } from 'mastodon/hooks/useAudioContext';
 import { useAudioVisualizer } from 'mastodon/hooks/useAudioVisualizer';
-import {
-  displayMedia,
-  useBlurhash,
-  reduceMotion,
-} from 'mastodon/initial_state';
+import { displayMedia, useBlurhash } from 'mastodon/initial_state';
 import { playerSettings } from 'mastodon/settings';
+
+import { AudioVisualizer } from './visualizer';
 
 const messages = defineMessages({
   play: { id: 'video.play', defaultMessage: 'Play' },
@@ -43,8 +41,8 @@ const persistVolume = (volume: number, muted: boolean) => {
 };
 
 const restoreVolume = (audio: HTMLAudioElement) => {
-  const volume = (playerSettings.get('volume') as number | undefined) ?? 0.5;
-  const muted = (playerSettings.get('muted') as boolean | undefined) ?? false;
+  const volume = playerSettings.get('volume') ?? 0.5;
+  const muted = playerSettings.get('muted') ?? false;
 
   audio.volume = volume;
   audio.muted = muted;
@@ -120,7 +118,6 @@ export const Audio: React.FC<{
   const seekRef = useRef<HTMLDivElement>(null);
   const volumeRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>();
-  const accessibilityId = useId();
 
   const { audioContextRef, sourceRef, gainNodeRef, playAudio, pauseAudio } =
     useAudioContext({ audioElementRef: audioRef });
@@ -163,7 +160,6 @@ export const Audio: React.FC<{
         }
         void spring.start({
           volume: `${audioRef.current.volume * 100}%`,
-          immediate: reduceMotion,
         });
       }
     },
@@ -217,7 +213,6 @@ export const Audio: React.FC<{
         if (audioRef.current && audioRef.current.duration > 0) {
           void spring.start({
             progress: `${(audioRef.current.currentTime / audioRef.current.duration) * 100}%`,
-            immediate: reduceMotion,
             config: config.stiff,
           });
         }
@@ -263,7 +258,6 @@ export const Audio: React.FC<{
     if (lastTimeRange > -1) {
       void spring.start({
         buffer: `${Math.ceil(audioRef.current.buffered.end(lastTimeRange) / audioRef.current.duration) * 100}%`,
-        immediate: reduceMotion,
       });
     }
   }, [spring]);
@@ -278,7 +272,6 @@ export const Audio: React.FC<{
 
     void spring.start({
       volume: `${audioRef.current.muted ? 0 : audioRef.current.volume * 100}%`,
-      immediate: reduceMotion,
     });
 
     persistVolume(audioRef.current.volume, audioRef.current.muted);
@@ -546,19 +539,6 @@ export const Audio: React.FC<{
     [togglePlay, toggleMute],
   );
 
-  const springForBand0 = useSpring({
-    to: { r: 50 + (frequencyBands[0] ?? 0) * 10 },
-    config: config.wobbly,
-  });
-  const springForBand1 = useSpring({
-    to: { r: 50 + (frequencyBands[1] ?? 0) * 10 },
-    config: config.wobbly,
-  });
-  const springForBand2 = useSpring({
-    to: { r: 50 + (frequencyBands[2] ?? 0) * 10 },
-    config: config.wobbly,
-  });
-
   const progress = Math.min((currentTime / loadedDuration) * 100, 100);
   const effectivelyMuted = muted || volume === 0;
 
@@ -649,81 +629,7 @@ export const Audio: React.FC<{
         </div>
 
         <div className='audio-player__controls__play'>
-          <svg
-            className='audio-player__visualizer'
-            viewBox='0 0 124 124'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <animated.circle
-              opacity={0.5}
-              cx={57}
-              cy={62.5}
-              r={springForBand0.r}
-              fill='var(--player-accent-color)'
-            />
-            <animated.circle
-              opacity={0.5}
-              cx={65}
-              cy={57.5}
-              r={springForBand1.r}
-              fill='var(--player-accent-color)'
-            />
-            <animated.circle
-              opacity={0.5}
-              cx={63}
-              cy={66.5}
-              r={springForBand2.r}
-              fill='var(--player-accent-color)'
-            />
-
-            <g clipPath={`url(#${accessibilityId}-clip)`}>
-              <rect
-                x={14}
-                y={14}
-                width={96}
-                height={96}
-                fill={`url(#${accessibilityId}-pattern)`}
-              />
-              <rect
-                x={14}
-                y={14}
-                width={96}
-                height={96}
-                fill='var(--player-background-color'
-                opacity={0.45}
-              />
-            </g>
-
-            <defs>
-              <pattern
-                id={`${accessibilityId}-pattern`}
-                patternContentUnits='objectBoundingBox'
-                width='1'
-                height='1'
-              >
-                <use href={`#${accessibilityId}-image`} />
-              </pattern>
-
-              <clipPath id={`${accessibilityId}-clip`}>
-                <rect
-                  x={14}
-                  y={14}
-                  width={96}
-                  height={96}
-                  rx={48}
-                  fill='white'
-                />
-              </clipPath>
-
-              <image
-                id={`${accessibilityId}-image`}
-                href={poster}
-                width={1}
-                height={1}
-                preserveAspectRatio='none'
-              />
-            </defs>
-          </svg>
+          <AudioVisualizer frequencyBands={frequencyBands} poster={poster} />
 
           <button
             type='button'

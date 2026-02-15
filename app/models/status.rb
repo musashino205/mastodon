@@ -43,15 +43,9 @@ class Status < ApplicationRecord
   include Status::SnapshotConcern
   include Status::ThreadingConcern
   include Status::Visibility
+  include Status::InteractionPolicyConcern
 
   MEDIA_ATTACHMENTS_LIMIT = 4
-
-  QUOTE_APPROVAL_POLICY_FLAGS = {
-    unknown: (1 << 0),
-    public: (1 << 1),
-    followers: (1 << 2),
-    followed: (1 << 3),
-  }.freeze
 
   rate_limit by: :account, family: :statuses
 
@@ -76,6 +70,8 @@ class Status < ApplicationRecord
     belongs_to :reblog, foreign_key: 'reblog_of_id', inverse_of: :reblogs
   end
 
+  has_one :owned_conversation, class_name: 'Conversation', foreign_key: 'parent_status_id', inverse_of: :parent_status, dependent: nil
+
   has_many :favourites, inverse_of: :status, dependent: :destroy
   has_many :bookmarks, inverse_of: :status, dependent: :destroy
   has_many :reblogs, foreign_key: 'reblog_of_id', class_name: 'Status', inverse_of: :reblog, dependent: :destroy
@@ -84,6 +80,7 @@ class Status < ApplicationRecord
   has_many :mentions, dependent: :destroy, inverse_of: :status
   has_many :mentioned_accounts, through: :mentions, source: :account, class_name: 'Account'
   has_many :media_attachments, dependent: :nullify
+  has_many :quotes, foreign_key: 'quoted_status_id', inverse_of: :quoted_status, dependent: :nullify
 
   # The `dependent` option is enabled by the initial `mentions` association declaration
   has_many :active_mentions, -> { active }, class_name: 'Mention', inverse_of: :status # rubocop:disable Rails/HasManyOrHasOneDependent
@@ -93,6 +90,7 @@ class Status < ApplicationRecord
   has_many :local_favorited, -> { merge(Account.local) }, through: :favourites, source: :account
   has_many :local_reblogged, -> { merge(Account.local) }, through: :reblogs, source: :account
   has_many :local_bookmarked, -> { merge(Account.local) }, through: :bookmarks, source: :account
+  has_many :local_replied, -> { merge(Account.local) }, through: :replies, source: :account
 
   has_and_belongs_to_many :tags # rubocop:disable Rails/HasAndBelongsToMany
 
@@ -105,7 +103,7 @@ class Status < ApplicationRecord
   has_one :quote, inverse_of: :status, dependent: :destroy
 
   validates :uri, uniqueness: true, presence: true, unless: :local?
-  validates :text, presence: true, unless: -> { with_media? || reblog? }
+  validates :text, presence: true, unless: -> { with_media? || reblog? || with_quote? }
   validates_with StatusLengthValidator
   validates_with DisallowedHashtagsValidator
   validates :reblog, uniqueness: { scope: :account }, if: :reblog?
@@ -120,7 +118,11 @@ class Status < ApplicationRecord
   scope :with_accounts, ->(ids) { where(id: ids).includes(:account) }
   scope :without_replies, -> { not_reply.or(reply_to_account) }
   scope :not_reply, -> { where(reply: false) }
+  scope :only_reblogs, -> { where.not(reblog_of_id: nil) }
+  scope :only_polls, -> { where.not(poll_id: nil) }
+  scope :without_polls, -> { where(poll_id: nil) }
   scope :reply_to_account, -> { where(arel_table[:in_reply_to_account_id].eq arel_table[:account_id]) }
+  scope :not_replying_to_account, ->(account) { where.not(in_reply_to_account: account) }
   scope :without_reblogs, -> { where(statuses: { reblog_of_id: nil }) }
   scope :tagged_with, ->(tag_ids) { joins(:statuses_tags).where(statuses_tags: { tag_id: tag_ids }) }
   scope :not_excluded_by_account, ->(account) { where.not(account_id: account.excluded_from_timeline_account_ids) }
@@ -135,6 +137,7 @@ class Status < ApplicationRecord
   scope :tagged_with_none, lambda { |tag_ids|
     where('NOT EXISTS (SELECT * FROM statuses_tags forbidden WHERE forbidden.status_id = statuses.id AND forbidden.tag_id IN (?))', tag_ids)
   }
+  scope :without_empty_attachments, -> { where(ordered_media_attachment_ids: nil).or(where.not(ordered_media_attachment_ids: [])) }
 
   after_create_commit :trigger_create_webhooks
   after_update_commit :trigger_update_webhooks
@@ -153,6 +156,7 @@ class Status < ApplicationRecord
   around_create Mastodon::Snowflake::Callbacks
 
   after_create :set_poll_id
+  after_create :update_conversation
 
   # The `prepend: true` option below ensures this runs before
   # the `dependent: destroy` callbacks remove relevant records
@@ -254,6 +258,10 @@ class Status < ApplicationRecord
     ordered_media_attachments.any?
   end
 
+  def with_quote?
+    quote.present?
+  end
+
   def with_preview_card?
     preview_cards_status.present?
   end
@@ -300,6 +308,10 @@ class Status < ApplicationRecord
 
   def favourites_count
     status_stat&.favourites_count || 0
+  end
+
+  def quotes_count
+    status_stat&.quotes_count || 0
   end
 
   # Reblogs count received from an external instance
@@ -439,8 +451,14 @@ class Status < ApplicationRecord
       self.in_reply_to_account_id = carried_over_reply_to_account_id
       self.conversation_id        = thread.conversation_id if conversation_id.nil?
     elsif conversation_id.nil?
-      self.conversation = Conversation.new
+      build_conversation
     end
+  end
+
+  def update_conversation
+    return if reply?
+
+    conversation.update!(parent_status: self, parent_account: account) if conversation && conversation.parent_status.nil?
   end
 
   def carried_over_reply_to_account_id
@@ -464,7 +482,7 @@ class Status < ApplicationRecord
   def increment_counter_caches
     return if direct_visibility?
 
-    account&.increment_count!(:statuses_count)
+    account&.increment_count!(:statuses_count, status_created_at: created_at)
     reblog&.increment_count!(:reblogs_count) if reblog?
     thread&.increment_count!(:replies_count) if in_reply_to_id.present? && distributable?
   end

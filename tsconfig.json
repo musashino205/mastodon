@@ -23,16 +23,14 @@
       "mastodon/*": ["app/javascript/mastodon/*"],
       "images/*": ["app/javascript/images/*"],
       "styles/*": ["app/javascript/styles/*"]
-    }
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": [
     "vite.config.mts",
     "vitest.config.mts",
     "config/vite",
-    "app/javascript/mastodon",
-    "app/javascript/entrypoints",
-    "app/javascript/types",
-    ".storybook/*.ts",
-    ".storybook/*.tsx"
+    "app/javascript",
+    ".storybook/*"
   ]
 }

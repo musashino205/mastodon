@@ -6,6 +6,12 @@ RSpec.describe Account do
   it_behaves_like 'Account::Search'
   it_behaves_like 'Reviewable'
 
+  describe 'Associations' do
+    it { is_expected.to have_many(:account_notes).inverse_of(:account) }
+    it { is_expected.to have_many(:action_logs).class_name('Admin::ActionLog') }
+    it { is_expected.to have_many(:targeted_account_notes).inverse_of(:target_account) }
+  end
+
   context 'with an account record' do
     subject { Fabricate(:account) }
 
@@ -386,36 +392,6 @@ RSpec.describe Account do
     end
   end
 
-  describe '.following_map' do
-    it 'returns an hash' do
-      expect(described_class.following_map([], 1)).to be_a Hash
-    end
-  end
-
-  describe '.followed_by_map' do
-    it 'returns an hash' do
-      expect(described_class.followed_by_map([], 1)).to be_a Hash
-    end
-  end
-
-  describe '.blocking_map' do
-    it 'returns an hash' do
-      expect(described_class.blocking_map([], 1)).to be_a Hash
-    end
-  end
-
-  describe '.requested_map' do
-    it 'returns an hash' do
-      expect(described_class.requested_map([], 1)).to be_a Hash
-    end
-  end
-
-  describe '.requested_by_map' do
-    it 'returns an hash' do
-      expect(described_class.requested_by_map([], 1)).to be_a Hash
-    end
-  end
-
   describe 'MENTION_RE' do
     subject { described_class::MENTION_RE }
 
@@ -536,6 +512,8 @@ RSpec.describe Account do
     context 'when account is local' do
       subject { Fabricate.build :account, domain: nil }
 
+      let(:domains_limit) { described_class::ATTRIBUTION_DOMAINS_LIMIT }
+
       context 'with an existing differently-cased username account' do
         before { Fabricate :account, username: 'the_doctor' }
 
@@ -577,8 +555,8 @@ RSpec.describe Account do
       it { is_expected.to validate_absence_of(:shared_inbox_url).on(:create) }
       it { is_expected.to validate_absence_of(:uri).on(:create) }
 
-      it { is_expected.to allow_values([], ['example.com'], (1..100).to_a).for(:attribution_domains) }
-      it { is_expected.to_not allow_values(['example com'], ['@'], (1..101).to_a).for(:attribution_domains) }
+      it { is_expected.to allow_values([], ['example.com'], (1..domains_limit).to_a).for(:attribution_domains) }
+      it { is_expected.to_not allow_values(['example com'], ['@'], (1..(domains_limit + 1)).to_a).for(:attribution_domains) }
     end
 
     context 'when account is remote' do
@@ -591,6 +569,8 @@ RSpec.describe Account do
 
         it { is_expected.to_not allow_values('username', 'Username').for(:username) }
       end
+
+      it { is_expected.to validate_length_of(:username).is_at_most(described_class::USERNAME_LENGTH_HARD_LIMIT) }
 
       it { is_expected.to allow_values('the-doctor', username_over_limit).for(:username) }
       it { is_expected.to_not allow_values('the doctor').for(:username) }
@@ -667,19 +647,6 @@ RSpec.describe Account do
         expect(results)
           .to include(alice)
           .and not_include(bob)
-      end
-    end
-
-    describe 'alphabetic' do
-      it 'sorts by alphabetic order of domain and username' do
-        matches = [
-          { username: 'a', domain: 'a' },
-          { username: 'b', domain: 'a' },
-          { username: 'a', domain: 'b' },
-          { username: 'b', domain: 'b' },
-        ].map(&method(:Fabricate).curry(2).call(:account))
-
-        expect(described_class.without_internal.alphabetic).to eq matches
       end
     end
 
@@ -820,6 +787,39 @@ RSpec.describe Account do
       end
 
       expect(subject.reload.followers_count).to eq 15
+    end
+  end
+
+  describe '#featureable?' do
+    subject { Fabricate.build(:account, domain: (local ? nil : 'example.com'), discoverable:) }
+
+    context 'when account is local' do
+      let(:local) { true }
+
+      context 'when account is discoverable' do
+        let(:discoverable) { true }
+
+        it 'returns `true`' do
+          expect(subject.featureable?).to be true
+        end
+      end
+
+      context 'when account is not discoverable' do
+        let(:discoverable) { false }
+
+        it 'returns `false`' do
+          expect(subject.featureable?).to be false
+        end
+      end
+    end
+
+    context 'when account is remote' do
+      let(:local) { false }
+      let(:discoverable) { true }
+
+      it 'returns `false`' do
+        expect(subject.featureable?).to be false
+      end
     end
   end
 end
