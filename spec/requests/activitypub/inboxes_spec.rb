@@ -62,6 +62,33 @@ RSpec.describe 'ActivityPub Inboxes' do
               .to have_http_status(202)
           end
         end
+
+        context 'when account is permanently deleted' do
+          before do
+            account.mark_deleted!
+            account.deletion_request.destroy
+          end
+
+          it 'returns http gone' do
+            subject
+
+            expect(response)
+              .to have_http_status(410)
+          end
+        end
+
+        context 'when account is pending deletion' do
+          before do
+            account.mark_deleted!
+          end
+
+          it 'returns http accepted' do
+            subject
+
+            expect(response)
+              .to have_http_status(202)
+          end
+        end
       end
     end
 
@@ -155,6 +182,24 @@ RSpec.describe 'ActivityPub Inboxes' do
 
         expect(response)
           .to have_http_status(401)
+      end
+
+      context 'when sending an unknown account' do
+        let(:unknown_actor) do
+          {
+            actor: 'https://unknown-actor.host',
+            object: 'https://unknown-actor.host',
+            type: 'Update',
+          }
+        end
+        let(:headers) { { 'CONTENT_TYPE' => 'application/json' } }
+
+        it 'returns http accepted' do
+          post(inbox_path, params: unknown_actor.to_json, headers:)
+
+          expect(response)
+            .to have_http_status(202)
+        end
       end
     end
   end
